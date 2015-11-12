@@ -41,16 +41,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+.controller('PartidasCtrl', function($scope) {
+  $scope.partidas = [
+    { id: 1, data: '15 de Novembro de 2015', adversario: 'SEMILC Society', local: 'CDC Lourenço Cabreira' }
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PartidaCtrl', function($scope, $stateParams) {
 });
