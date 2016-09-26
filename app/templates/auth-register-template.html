@@ -1,0 +1,34 @@
+<header class="header">
+	<container>
+		<h1 class="header__title">
+			Cadastre-se
+		</h1>
+	</container>
+</header>
+<section class="section">
+	<container>	
+		<form>
+			<form-field>
+				<input type="email"
+				   required
+				   placeholder="voce@exemplo.com"
+				   data-ng-model="form.email" />
+			</form-field>
+			<form-field>
+				<input type="password"
+				   required
+				   placeholder="**************"
+				   data-ng-model="form.password" />
+			</form-field>
+			<form-field>
+				<button type="button"
+						data-ng-click="register()">
+					CADASTRAR
+				</button>
+			</form-field>
+		</form>
+
+		<div data-ng-bind="user.email"></div>
+
+	</container>
+</section>

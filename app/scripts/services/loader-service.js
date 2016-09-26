@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rastros')
-.factory('loader', function () {
+.factory('loader', function ($timeout) {
 
     var factory = {
         activities: [],
@@ -19,11 +19,13 @@ angular.module('rastros')
     };
 
     factory.stop = function (activity) {
-        for (var i in factory.activities) {
-            if (factory.activities[i] === activity) {
-                factory.activities.splice(i, 1);
+        $timeout(function () {
+            for (var i in factory.activities) {
+                if (factory.activities[i] === activity) {
+                    factory.activities.splice(i, 1);
+                }
             }
-        }
+        }, 100);
     };
 
     factory.error = function (error, errorObj) {

@@ -55,6 +55,20 @@
 
         </content>
 
+        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey           : 'AIzaSyDwydxB0ed_UU68yn6lUNUmFyMD19HcTSg',
+                authDomain       : 'rastros-app.firebaseapp.com',
+                databaseURL      : 'https://rastros-app.firebaseio.com',
+                storageBucket    : 'rastros-app.appspot.co',
+                messagingSenderId: '118411076216'
+            };
+
+            firebase.initializeApp(config);
+        </script>
+
         <script src="scripts/vendor.js"></script>
 
         <script src="scripts/scripts.js"></script>

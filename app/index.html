@@ -60,6 +60,20 @@
 
         </content>
 
+        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey           : 'AIzaSyDwydxB0ed_UU68yn6lUNUmFyMD19HcTSg',
+                authDomain       : 'rastros-app.firebaseapp.com',
+                databaseURL      : 'https://rastros-app.firebaseio.com',
+                storageBucket    : 'rastros-app.appspot.co',
+                messagingSenderId: '118411076216'
+            };
+
+            firebase.initializeApp(config);
+        </script>
+
         <!-- build:js scripts/vendor.js -->
         <script src="/bower_components/angular/angular.js"></script>
         <script src="/bower_components/angular-route/angular-route.js"></script>
@@ -86,11 +100,14 @@
         <script src="/scripts/services/loader-service.js"></script>
         <script src="/scripts/services/scroll-service.js"></script>
         <script src="/scripts/services/futliga-service.js"></script>
+        <script src="/scripts/services/firebase-service.js"></script>
+        <script src="/scripts/services/auth-service.js"></script>
         <script src="/scripts/services/facebook-auth-service.js"></script>
         <!-- <script src="/scripts/services/progressive-web-app-service.js"></script> -->
 
         <script src="/scripts/controllers/404-controller.js"></script>
         <script src="/scripts/controllers/home-controller.js"></script>
+        <script src="/scripts/controllers/auth-register-controller.js"></script>
 
         <script src="/scripts/directives/loader-directive.js"></script>
         <script src="/scripts/directives/navbar-directive.js"></script>
@@ -106,16 +123,21 @@
                 FB.init({
                     appId  : '100871850338155',
                     xfbml  : true,
-                    cookie : true,
+                    cookie : false,
                     version: 'v2.7'
                 });
             };
 
             (function(d, s, id){
                 var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
+                if (d.getElementById(id)) {
+                    return;
+                }
+
+                js     = d.createElement(s);
+                js.id  = id;
                 js.src = "//connect.facebook.net/pt_BR/sdk.js";
+
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
