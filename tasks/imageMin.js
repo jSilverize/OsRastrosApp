@@ -16,6 +16,6 @@ gulp.task('image-min', () => {
                 removeViewBox: false
             }]
         }))
+        .pipe(gulp.dest(paths.docs))
         .pipe(gulp.dest(paths.dist));
 });
-
