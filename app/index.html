@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html data-ng-app="rastros">
+    <head>
+        <title>
+            Rastros App
+        </title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="canonical" href="https://rastros-app.firebaseapp.com/" />
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <link rel="icon"                             href="./assets/images/icons/icon-32x32.png" />
+        <link rel="apple-touch-icon"                 href="./assets/images/touch-icon-iphone.png" />
+        <link rel="apple-touch-icon" sizes="76x76"   href="./assets/images/touch-icon-ipad.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/touch-icon-iphone-retina.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/touch-icon-ipad-retina.png" />
+
+        <!-- Web App manifest -->
+        <link rel="manifest" href="manifest.json" />
+
+        <!-- Mobile settings -->
+        <meta name="theme-color" content="#222222" />
+        <meta name="mobile-web-app-capable" content="yes" />
+
+        <!-- Add to home screen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-title" content="Rastros App" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="./assets/images/icons/icon-152x152.png" />
+
+        <!-- Microsoft settings -->
+        <meta name="msapplication-TileImage" content="./assets/images/icons/icon-144x144.png" />
+        <meta name="msapplication-TileColor" content="#222222" />
+
+        <!-- build:css assets/vendor.css -->
+        <link rel="stylesheet" href="/bower_components/reset-css/reset.css" />
+        <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
+        <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="/bower_components/ng-dialog/css/ngDialog.css" />
+        <!-- endbuild -->
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="./assets/site.css">
+    </head>
+
+    <body>
+
+        <loader></loader>
+
+        <content>
+
+            <navbar></navbar>
+
+            <main data-ng-view></main>
+
+            <footer></footer>
+
+        </content>
+
+        <!-- build:js scripts/vendor.js -->
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-route/angular-route.js"></script>
+        <script src="/bower_components/angular-animate/angular-animate.js"></script>
+        <script src="/bower_components/angular-scroll/angular-scroll.js"></script>
+        <script src="/bower_components/angular-ui-mask/dist/mask.js"></script>
+        <script src="/bower_components/ng-dialog/js/ngDialog.js"></script>
+        <script src="/bower_components/moment/moment.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js scripts/scripts.js -->
+        <script src="/scripts/app.js"></script>
+        <script src="/scripts/run.js"></script>
+        <script src="/scripts/views.js"></script>
+        <!-- <script src="/scripts/progressive-web-app.js"></script> -->
+
+        <script src="/bower_components/moment/locale/pt-br.js"></script>
+
+        <script src="/scripts/constants/urls-constant.js"></script>
+
+        <script src="/scripts/services/moment-service.js"></script>
+        <script src="/scripts/services/route-change-service.js"></script>
+        <script src="/scripts/services/flow-service.js"></script>
+        <script src="/scripts/services/loader-service.js"></script>
+        <script src="/scripts/services/scroll-service.js"></script>
+        <script src="/scripts/services/futliga-service.js"></script>
+        <script src="/scripts/services/facebook-auth-service.js"></script>
+        <!-- <script src="/scripts/services/progressive-web-app-service.js"></script> -->
+
+        <script src="/scripts/controllers/404-controller.js"></script>
+        <script src="/scripts/controllers/home-controller.js"></script>
+
+        <script src="/scripts/directives/loader-directive.js"></script>
+        <script src="/scripts/directives/navbar-directive.js"></script>
+
+        <script src="/scripts/filters/unsafe-filter.js"></script>
+        <script src="/scripts/filters/remove-break-lines-filter.js"></script>
+        <script src="/scripts/filters/string-remove-after-filter.js"></script>
+        <script src="/scripts/filters/futliga-matches-filter.js"></script>
+        <script src="/scripts/filters/week-day-filter.js"></script>
+
+        <script type="text/javascript">
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId  : '100871850338155',
+                    xfbml  : true,
+                    cookie : true,
+                    version: 'v2.7'
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <!-- endbuild -->
+    </body>
+</html>

@@ -1,51 +1,44 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var bower = require('bower');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var sh = require('shelljs');
+'use strict';
 
-var paths = {
-  sass: ['./scss/**/*.scss']
-};
+const gulp   = require('gulp'),
+      reqDir = require('require-dir');
 
-gulp.task('default', ['sass']);
+// Require gulp tasks
+const dir = reqDir('./tasks');
 
-gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
-    .pipe(sass())
-    .on('error', sass.logError)
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
+
+/**
+ * Default task
+ */
+gulp.task('default', [
+    'ng-template',
+    'serve',
+    'js-hint',
+    'sass'
+], () => {
+    gulp.watch([dir.paths.js.src], ['js-hint']);
+    gulp.watch(dir.paths.html, ['ng-template']);
+    gulp.watch(dir.paths.sassAll, ['sass']);
 });
 
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
-});
 
-gulp.task('install', ['git-check'], function() {
-  return bower.commands.install()
-    .on('log', function(data) {
-      gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-    });
-});
+/**
+ * Test task
+ */
+gulp.task('test', [
+    'js-hint',
+    'code-style'
+]);
 
-gulp.task('git-check', function(done) {
-  if (!sh.which('git')) {
-    console.log(
-      '  ' + gutil.colors.red('Git is not installed.'),
-      '\n  Git, the version control system, is required to download Ionic.',
-      '\n  Download git here:', gutil.colors.cyan('http://git-scm.com/downloads') + '.',
-      '\n  Once git is installed, run \'' + gutil.colors.cyan('gulp install') + '\' again.'
-    );
-    process.exit(1);
-  }
-  done();
-});
+
+/**
+ * Build task
+ */
+gulp.task('build', [
+    'ng-template',
+    'sass',
+    'copy',
+    'image-min',
+    'svg-min',
+    'usemin'
+]);

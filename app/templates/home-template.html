@@ -1,0 +1,84 @@
+<header class="header">
+	<container>
+		<h1 class="title">
+			Próximas Partidas
+		</h1>
+	</container>
+</header>
+
+<section class="section">
+	<container>
+		<div class="card match"
+			 data-ng-repeat="match in nextMatches">
+
+			<div class="match__teams">
+
+				<figure class="match__team">
+					<img class="match__team__logo"
+						 data-ng-src="{{ match.opponent.logo }}"
+						 alt="{{ match.opponent.title }}" />
+					<legend class="match__team__title">
+						{{ match.opponent.title }}
+					</legend>
+				</figure>
+
+				<div class="match__versus">×</div>
+
+				<figure class="match__team">
+					<img class="match__team__logo"
+						 data-ng-src="https://www.futliga.com.br/imagens/distintivos/8985.gif"
+						 alt="Os Rastros" />
+					<legend class="match__team__title">
+						Os Rastros
+					</legend>
+				</figure>
+
+			</div>
+
+			<div class="match__details">
+				<div class="match__details__item">
+					<img class="match__details__item__icon"
+						 data-ng-src="./assets/images/icons/calendar.svg"
+						 width="20" />
+					{{ match.date.formatted }}
+				</div>
+				<div class="match__details__item">
+					<img class="match__details__item__icon"
+						 data-ng-src="./assets/images/icons/clock.svg"
+						 width="20" />
+					{{ match.date.time }}, bola rolando
+				</div>
+
+				<div class="match__details__extra"
+					 id="location-1">
+					<div class="match__details__item">
+						<img class="match__details__item__icon"
+							 data-ng-src="./assets/images/icons/placeholder.svg"
+							 width="20" />
+						{{ match.location.stadium }}
+					</div>
+					<!-- <div class="match__details__item">
+						<img class="match__details__item__icon"
+							 data-ng-src="./assets/images/icons/map.svg"
+							 width="20" />
+						Rua Talamanca, S/N
+					</div>
+					<div class="match__details__item">
+						<img class="match__details__item__icon"
+							 data-ng-src="./assets/images/icons/map-location.svg"
+							 width="20" />
+						Zona Sul, Jardim São Francisco
+					</div> -->
+				</div>
+
+				<!--
+				<button class="match__details__button button"
+						onclick="showLocation('location-1')">
+					INFORMAÇÕES SOBRE O LOCAL
+				</button>
+				-->
+			</div>
+
+		</div>
+	</container>
+</section>

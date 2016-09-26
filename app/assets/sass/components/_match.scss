@@ -1,0 +1,131 @@
+.match.card {
+    padding: 20px;
+    margin : 0 auto 20px;
+
+    border-radius: 4px;
+
+    background: $color-white;
+    color     : $color-primary;
+    box-shadow: 0 2px 8px $color-black;
+}
+
+.match__teams {
+    position: relative;
+}
+
+.match__team,
+.match__teams {
+    text-align: center;
+}
+
+.match__team,
+.match__versus {
+    display: inline-block;
+    margin : 0;
+    padding: 0;
+}
+
+.match__versus {
+    position : absolute;
+    top      : 50%;
+    transform: translateY(-50%);
+
+    width: 1%;
+}
+
+.match__team {
+    position: relative;
+    vertical-align: top;
+    width: 48%;
+}
+
+.match__team:last-of-type {
+    margin-left: 2%;
+}
+
+.match__team__logo {
+    width : 75px;
+    height: 75px;
+}
+
+.match__team__logo,
+.match__team__title {
+    position: relative;
+    display : block;
+    margin-right: auto;
+    margin-left : auto;
+}
+
+.match__team__title {
+    right: 0;
+    left : 0;
+
+    font-weight: bold;
+
+    text-align    : center;
+    text-transform: uppercase;
+
+    margin-top   : 5px;
+    margin-bottom: 8px;
+}
+
+.match__team__title,
+.match__details__item {
+    font-size  : 14px;
+    line-height: 1.45;
+}
+
+.match__details {
+    margin: 12px 0 8px;
+    text-align: center;
+}
+
+.match__details__item {
+    position: relative;
+    margin  : 0 0 10px;
+    padding : 0 0 0 30px;
+    text-align: left;
+}
+
+.match__details__item:last-of-type {
+    margin-bottom: 0;
+}
+
+.match__details__item__icon {
+    position: absolute;
+    left: 0;
+    top : 47%;
+    transform: translateY(-50%);
+    max-width: 20px;
+}
+//
+// .match__details__extra {
+//     display: none;
+// }
+//
+// .match__details__extra.active {
+//     display: block;
+// }
+.match__details__button {
+    margin: 4px auto 5px;
+}
+
+
+@include bigDesktop {
+    .match__teams,
+    .match__details {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .match__teams {
+        width  : 70%;
+
+        border-right: 1px solid $color-light-grey;
+    }
+
+    .match__details {
+        width  : 28%;
+        margin : 15px 0;
+    }
+}

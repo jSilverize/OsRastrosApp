@@ -1,0 +1,33 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
+* {
+	@include border-box();
+}
+
+body {
+	font-family: "Helvetica Neue", "Helvetica", "Roboto", "Ubuntu", "Segoe UI", sans-serif;
+
+	font-weight: 400;
+	font-size  : 16px;
+	line-height: 1.25;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+	padding-top: $navbar-min-height;
+
+	background-color: lighten($color-black, 15%);
+	color           : $color-white;
+}
+
+content {
+	display: block;
+}
+
+strong {
+	font-weight: 500;
+}
+
+.loading {
+	@include blur();
+}
