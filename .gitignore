@@ -5,4 +5,4 @@ dist/
 
 views.js
 
-site.css
+app/assets/site.css

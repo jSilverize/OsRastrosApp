@@ -11,6 +11,6 @@ const gulp   = require('gulp'),
 gulp.task('svg-min', () => {
     return gulp.src(paths.svg, { base: './app/' })
         .pipe(svgmin())
+        .pipe(gulp.dest(paths.docs))
         .pipe(gulp.dest(paths.dist));
 });
-

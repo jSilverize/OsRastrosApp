@@ -18,6 +18,6 @@ gulp.task('usemin', ['ng-template'], () => {
             cssShowcase: [nano({ safe: true })],
             js: [annotate, uglify],
         }))
-        .pipe(gulp.dest(paths.dist));
+        .pipe(gulp.dest(paths.dist))
+        .pipe(gulp.dest(paths.docs));
 });
-

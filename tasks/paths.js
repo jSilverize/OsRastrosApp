@@ -11,7 +11,8 @@ var paths = {
     manifest: './app/manifest.json',
     images  : './app/assets/{,*/,*/*/,*/*/*/}*.{png,jpg,jpeg,gif,ico}',
     svg     : './app/assets/{,*/,*/*/,*/*/*/}*.svg',
-    dist    : './dist'
+    dist    : './dist',
+    docs    : './docs'
 };
 
 module.exports = paths;
