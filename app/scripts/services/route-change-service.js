@@ -6,12 +6,13 @@ angular.module('rastros')
 
     var factory     = {};
     var bodyContent = $document.find('content');
+    var loaderMsg   = 'Trampando...';
 
     /**
      * On route change start
      */
     factory.start = function () {
-        loader.start('Loading...');
+        loader.start(loaderMsg);
 
         bodyContent.addClass('loading');
     };
@@ -24,7 +25,7 @@ angular.module('rastros')
 
         $timeout(function () {
             bodyContent.removeClass('loading');
-            loader.stop('Loading...');
+            loader.stop(loaderMsg);
         }, 800);
     };
 
@@ -32,9 +33,9 @@ angular.module('rastros')
     /**
      * On route change error
      */
-    factory.error = function () {
+    factory.error = function (error) {
         $timeout(function () {
-            loader.error('<strong>Ooops</strong>!<br />Something\'s wrong.<br />Sorry.');
+            loader.error('<strong>VISH</strong>!<br />Isso aqui deu errado:<br />"' + error.name + '"');
         }, 1000);
 
         flow.goBack();

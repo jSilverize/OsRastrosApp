@@ -2,9 +2,8 @@
 
 angular.module('rastros')
 .service('futliga', function ($http, $q, $filter) {
-    $http.defaults.useXDomain = true;
-
-    var futligaURL  = 'https://futliga.com.br/';
+    var corsURL     = 'https://cors-anywhere.herokuapp.com/';
+    var futligaURL  = corsURL + 'https://futliga.com.br/';
 
     var factory = {
         matches: [],
