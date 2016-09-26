@@ -14,18 +14,19 @@ $this: ".card";
 $this: ".match";
 #{$this} {
     &.card {
-        margin : 0 auto 20px;
+        margin : 40px auto;
     }
 
     &__teams {
         position: relative;
         width   : 70%;
+        padding : 25px 0;
 
         border-right: 1px solid $color-light-grey;
     }
 
     &__teams,
-    &__details {        
+    &__details {
         display: inline-block;
         vertical-align: top;
     }
@@ -83,15 +84,14 @@ $this: ".match";
             text-align    : center;
             text-transform: uppercase;
 
-            margin-top   : 5px;
-            margin-bottom: 8px;
+            margin-top: 5px;
         }
         
     }
 
     &__details {
         width  : 28%;
-        margin : 15px 0;
+        margin : 20px 0;
         padding-left: 20px;
 
         text-align: center;
@@ -115,8 +115,41 @@ $this: ".match";
                 top : 47%;
                 transform: translateY(-50%);
                 max-width: 20px;
+
+                &.fa {
+                    font-size: 19px;
+                }
+            }
+        }
+    }
+
+    @include phoneAndTablet {
+        &.card {
+            margin-bottom: 20px;
+        }
+
+        &__teams {
+            padding: 10px 0 0;
+            margin-top  : -5px;
+            border-right: 0;
+        }
+
+        &__teams,
+        &__details {
+            display: block;
+            width  : 100%;
+        }
+
+        &__details {
+            margin: 12px 0 5px;
+            padding-left: 0;
+        }
+
+        &__team {
+            &__title {
+                margin-top   : 5px;
+                margin-bottom: 8px;
             }
         }
     }
 }
-

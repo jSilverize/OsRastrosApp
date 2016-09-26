@@ -5,9 +5,19 @@ $this: ".header";
 
 	background-color: lighten($color-black, 10%);
 
-	.title {
+	&__title {
 		font-size  : 48px;
 		line-height: 1.25;
 		color      : $color-white;
+	}
+
+
+	@include phoneAndTablet {
+		padding: 26px 0 27px;
+		margin-bottom: -3px;
+
+		&__title {			
+			font-size: 24px;
+		}
 	}
 }
