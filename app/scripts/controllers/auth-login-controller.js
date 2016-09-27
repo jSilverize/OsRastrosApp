@@ -14,6 +14,10 @@ angular.module('rastros')
 		auth.login(form.email, form.password);
 	};
 
+	$scope.facebookLogin = function () {
+		auth.facebookLogin();
+	};
+
 	$scope.goToRegister = function () {
 		flow.goTo('/meu/cadastro');
 	};
