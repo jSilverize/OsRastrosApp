@@ -1,0 +1,67 @@
+$this: ".form";
+
+#{$this} {
+	display: block;
+	margin : 0;
+
+	&--vertical {
+	 	#{$this} {
+	 		&__label {
+	 			display: block;
+				margin : -3px 0 7px;
+	 		}
+
+	 		&__button {
+	 			margin-top: 30px;
+	 		}
+	 	}
+	}
+
+	&__label {
+		font-size  : 13px;
+		line-height: 1.25;
+		font-weight: bold;
+
+		text-transform: uppercase;
+
+		&[for] {
+			cursor: pointer;
+		}
+	}
+
+	&__field {
+		margin: #{$container-padding} 0;
+	}
+
+	&__control {
+		&:not([type="hidden"]),
+		&:not([type="radio"]),
+		&:not([type="checkbox"]) {
+			display: block;
+
+			width     : 100%;
+			min-height: 40px;
+
+			padding-right: #{$container-padding / 2};
+			padding-left : #{$container-padding / 2};
+
+			font-size: 15px;
+
+			color           : $color-black;
+			background-color: $color-white;
+
+			border       : 1px solid $color-black;
+			border-radius: 3px;
+
+			outline: 0;
+
+			transition: .15s;
+
+			&:focus,
+			&:active {
+				outline   : 0;
+				box-shadow: 0 0 6px $color-black;
+			}
+		}
+	}
+}

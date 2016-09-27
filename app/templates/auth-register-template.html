@@ -1,12 +1,17 @@
 <header class="header">
 	<container>
 		<h1 class="header__title">
-			Cadastre-se
+			<span data-ng-show="!user">
+				Cadastre-se
+			</span>
+			<span data-ng-show="user">
+				Salve, {{ user.name || user.email }}!
+			</span>
 		</h1>
 	</container>
 </header>
 <section class="section">
-	<container>	
+	<container data-ng-show="!user">
 		<form>
 			<form-field>
 				<input type="email"
@@ -28,7 +33,15 @@
 			</form-field>
 		</form>
 
-		<div data-ng-bind="user.email"></div>
+		<h2 class="section__title">
+			Já é cadastrado?
+		</h2>
+		<button data-ng-click="goToLogin()">
+			FAÇA LOGIN
+		</button>
+	</container>
 
+	<container data-ng-show="user">
+		<div data-ng-bind="user.email"></div>
 	</container>
 </section>

@@ -9,10 +9,11 @@ $button-primary: $color-primary;
     cursor          : pointer;
 
     margin          : 0;
-    padding         : 11px 15px 9px;
+    padding         : 12px 15px 8px;
 
     min-height      : 40px;
 
+    font-size       : 14px;
     line-height     : 1.25;
 
     text-align      : center;
@@ -32,9 +33,13 @@ $button-primary: $color-primary;
     }
 
     &:active {
-        padding-top   : 12px;
-        padding-bottom: 8px;
-        border-bottom : 1px;
+        padding-top   : 13px;
+        padding-bottom: 7px;
+        border-bottom-width: 1px;
+    }
+
+    &:focus {
+        box-shadow: 0 0 6px $color-black;
     }
 
     &:hover,

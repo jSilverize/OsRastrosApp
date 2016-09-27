@@ -19,7 +19,9 @@ angular.module('rastros')
         var _page     = page || '/';
         var blackList = ['/404', '/login', '/register'];
 
-        if (origin && blackList.indexOf(origin) === -1) {
+        origin = origin ? origin : $location.path();
+
+        if (blackList.indexOf(origin) === -1) {
             factory.lastPath = origin;
         }
 
