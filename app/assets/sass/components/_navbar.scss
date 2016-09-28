@@ -136,7 +136,7 @@ $this: ".navbar";
                         color: lighten($color-blue, 25%);
                     }
 
-                    .button {
+                    .btn {
                         margin: 10px 0;
                     }
                 }
@@ -263,11 +263,36 @@ $this: ".navbar";
     #{$this} {
         &-nav {
             #{$this}-menu {
-                display: none;
+                display : block;
+
+                width  : 100%;
+                padding: 0 0 10px;
+
+                background-color: $color-black;
 
                 &-toggle,
                 &-settings {
                     display: block;
+                }
+
+                &.list {
+                    .list-item {
+                        display: block;
+                        width  : 100%;
+
+                        .btn {
+                            display: block;
+                            width  : 100%; 
+                        }
+                    }
+
+                    .list-border {
+                        width : 100%; 
+                        height: 1px;
+                        border-top : 1px solid;
+                        border-left: none;
+                        margin: 5px 0 !important;
+                    }
                 }
             }
         }

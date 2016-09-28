@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rastros')
-.factory('auth', function ($rootScope, $q, fireb, user, loader, flow) {
+.factory('authentication', function ($rootScope, $q, fireb, user, loader, flow) {
 	var firebAuth = firebase.auth();
 	var factory   = {};
 
@@ -37,18 +37,10 @@ angular.module('rastros')
 
 		loader.start(loadMsg);
 
-		var test = firebAuth.signInWithRedirect(provider);
-
-		console.log(test);
-
-		debugger;
-
-		firebAuth.getRedirectResult()
+		firebAuth.signInWithPopup(provider)
 			.then(function (result) {
 					var _token = result.credential ? result.credential.accessToken : null;
 					var _user  = result.user;
-
-					console.log(_user);
 
 					user.data  		  = _user.providerData[0];
 					user.data.fbToken = _token;

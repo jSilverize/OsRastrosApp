@@ -4,7 +4,8 @@
 
 		<div class="navbar-nav">
 
-			<button class="navbar-menu-toggle">
+			<button class="navbar-menu-toggle"
+					data-ng-click="toggle()">
 				<i class="fa fa-fw fa-bars"></i>
 			</button>
 
@@ -18,7 +19,8 @@
 				Os Rastros
 			</a>
 
-			<ul class="navbar-menu list">
+			<ul class="navbar-menu list"
+				data-ng-show="opened">
 				<!-- 
 				<li class="list-item">
 					<a class="list-item-link"
@@ -34,7 +36,7 @@
 						 height="32" width="32"
 						 data-ng-src="user.photoURL"
 						 data-ng-if="user.photoURL" />
-					<a class="list-item-link navbar-menu-user dropdown-toggle"
+					<a class="btn btn--black navbar-menu-user"
 					   data-ng-click="goTo('/meu/cadastro')"
 					   data-ng-bind="user.name || user.email"
 					   title="Ver seu cadastro">
@@ -42,7 +44,7 @@
 				</li>
 				<li class="list-item"
 					data-ng-hide="user">
-					<a class="list-item-link"
+					<a class="btn btn--black"
 					   data-ng-click="goTo('/meu/login')">
 					   <i class="fa fa-fw fa-sign-in"></i>
 						Login
@@ -51,7 +53,7 @@
 				<li class="list-border"></li>
 				<li class="list-item"
 					data-ng-hide="user">
-					<a class="button"
+					<a class="btn btn--light-black"
 					   data-ng-click="goTo('/meu/cadastro')">
 					    <i class="fa fa-fw fa-user-plus"></i>
 						Cadastro
@@ -59,7 +61,7 @@
 				</li>
 				<li class="list-item"
 					data-ng-show="user">
-					<a class="list-item-link"
+					<a class="btn btn--light-black"
 					   data-ng-click="logout()"
 					   title="Sair">
 					   <i class="fa fa-fw fa-power-off"></i>

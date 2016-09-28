@@ -23,7 +23,7 @@ angular.module('rastros')
 		var loadMsg = 'Cadastrando';
 		loader.start(loadMsg);
 
-		firebase.auth().createUserWithEmailAndPassword(email, password)
+		firebAuth.createUserWithEmailAndPassword(email, password)
 			.catch(function(error) {
 				loader.error(error.message);
 			});

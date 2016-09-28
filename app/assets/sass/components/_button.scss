@@ -1,6 +1,6 @@
 /* Button
 -------------------------------------------------------------------------- */
-$this          : ".button";
+$this          : ".btn";
 $button-primary: $color-primary;
 
 #{$this} {
@@ -9,12 +9,13 @@ $button-primary: $color-primary;
     cursor          : pointer;
 
     margin          : 0;
-    padding         : 12px 15px 8px;
+    padding         : 12px 15px 10px;
 
     min-height      : 40px;
 
     font-size       : 14px;
     line-height     : 1.25;
+    font-weight     : bold;
 
     text-align      : center;
     text-decoration : none;
@@ -24,22 +25,20 @@ $button-primary: $color-primary;
     background-image: none;
     background-color: $button-primary;
     color           : $color-white;
-    border-bottom   : 3px solid rgba($color-black, .15);
     @include          text-shadow(0 1px rgba($color-black, .15));
     @include          transition();
 
     &:hover:not(:disabled) {
-        background-color: lighten($button-primary, 3%);
+        background-color: darken($button-primary, 3%);
     }
 
     &:active {
         padding-top   : 13px;
-        padding-bottom: 7px;
-        border-bottom-width: 1px;
+        padding-bottom: 8px;
     }
 
     &:focus {
-        box-shadow: 0 0 6px $color-black;
+        box-shadow: 0 0 6px rgba($color-black, .5) inset;
     }
 
     &:hover,
@@ -53,51 +52,56 @@ $button-primary: $color-primary;
         color              : darken($color-light-grey, 15%);
         @include             text-shadow(0 1px $color-white-smoke);
         background-color   : $color-light-grey;
-        border-bottom-color: lighten($color-grey, 5%);
         cursor             : default;
     }
 
-    &.softed {
-        background-color   : lighten($color-primary, 50%);
-        color              : $color-primary;
-        border-bottom-color: lighten($color-primary, 40%);
-        @include             text-shadow(none);
+    &--outlined {
+        padding-top     : 11px;
+        background-color: transparent;
+        color           : $color-white-smoke;
+        border-bottom   : none;
+        border          : 2px solid $color-white-smoke;
+        @include          text-shadow(none);
 
         &:hover {
-            background-color: lighten($color-primary, 45%);
+            background-color: darken($color-light-grey, 45%);
+        }
+
+        &:active {
+            padding-bottom: 8px;
         }
 
         &:disabled {
-            background-color   : lighten($color-light-grey, 10%);
-            border-bottom-color: lighten($color-light-grey, 5%);
-            color              : darken($color-light-grey, 5%);
-            @include             text-shadow(none);
+            border-color: lighten($color-light-grey, 5%);
+            color       : darken($color-light-grey, 5%);
         }
     }
 
-    &.wide {
+    &--wide {
         display: block;
         width: 100%;
     }
 
-    @each $btn_class, $btn_bgColor, $btn_bgShadow, $btn_txtColor in $principal-colors {
-        &.#{$btn_class}:not(:disabled) {
+    @each $btn_class, $btn_bgColor, $btn_txtColor in $principal-colors {
+        &--#{$btn_class}:not(:disabled) {
             background-color: #{$btn_bgColor};
             color           : #{$btn_txtColor};
 
             &:hover {
-                background-color: lighten($btn_bgColor, 8%);
+                background-color: darken($btn_bgColor, 5%);
             }
 
-            &.softed:not(:disabled) {
-                background-color   : lighten($btn_bgColor, 35%);
-                color              : $btn_bgColor;
-                border-bottom-color: lighten($btn_bgColor, 25%);
-                @include             text-shadow(none);
+            &#{$this} {
+                &--outlined:not(:disabled) {
+                    color           : $btn_bgColor;
+                    border          : 2px solid $btn_bgColor;
+                    background-color: transparent;
 
-                &:hover {
-                    background-color   : lighten($btn_bgColor, 30%);
-                    border-bottom-color: lighten($btn_bgColor, 20%);
+                    &:hover {
+                        color       : darken($btn_bgColor, 10%);
+                        border-color: darken($btn_bgColor, 10%);
+                        background-color: transparent;
+                    }
                 }
             }
         }

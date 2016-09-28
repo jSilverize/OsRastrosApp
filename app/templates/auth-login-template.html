@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<h2 class="section__title">
-					Seus dados
+					Credenciais
 				</h2>
 				<form class="form form--vertical"
 					  data-ng-submit="login()">
@@ -40,20 +40,24 @@
 							   data-ng-model="form.password" />
 					</div>
 					<div class="form__field">
-						<button class="form__button button wide"
+						<button class="form__button btn btn--wide btn--green"
 								type="submit"
 								data-ng-disabled="!form.email || !form.password">
+							<i class="fa fa-fw fa-sign-in"></i>
 							LOGIN
 						</button>
 					</div>
-					<div class="form__field">
-						OU ENTÃO
+					<div class="form__field text-center">
+						<div class="divider divider--horizontal">
+							OU ENTÃO
+						</div>
 					</div>
 					<div class="form__field">
-						<button class="form__button button wide"
+						<button class="form__button btn btn--wide btn--blue-facebook"
 								type="button"
 								data-ng-click="facebookLogin()">
-							ENTRAR COM O FACEBOOK
+							ENTRAR COM O SEU
+							<i class="fa fa-fw fa-lg fa-facebook-official"></i>
 						</button>
 					</div>
 				</form>
@@ -65,7 +69,7 @@
 				<h2 class="section__title">
 					Não tem cadastro?
 				</h2>
-				<button class="button green"
+				<button class="btn btn--wide btn--outlined btn--green"
 						data-ng-click="goToRegister()">
 					FAZ UM RÁPIDÃO
 				</button>
