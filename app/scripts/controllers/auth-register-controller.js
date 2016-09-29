@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rastros')
-.controller('RegisterController', function ($scope, user, fireb, flow) {
+.controller('RegisterController', function ($scope, authentication, user, fireb, flow) {
 	$scope.form = {};
 
 	$scope.register = function () {
@@ -11,7 +11,11 @@ angular.module('rastros')
 			return;
 		}
 
-		user.create(form.email, form.password);
+		authentication.login(form.email, form.password);
+	};
+
+	$scope.facebook = function () {
+		authentication.facebook();
 	};
 
 	$scope.goToLogin = function () {

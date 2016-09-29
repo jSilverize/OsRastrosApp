@@ -25,6 +25,19 @@
 				<form class="form form--vertical"
 					  data-ng-submit="register()">
 					<div class="form__field">
+						<button class="form__button btn btn--wide btn--blue-facebook"
+								type="button"
+								data-ng-click="facebook()">
+							CADASTRAR COM O SEU
+							<i class="fa fa-fw fa-lg fa-facebook-official"></i>
+						</button>
+					</div>
+					<div class="form__field text-center">
+						<div class="divider divider--horizontal">
+							OU ENTÃO
+						</div>
+					</div>
+					<div class="form__field">
 						<label class="form__label"
 							   for="email">
 							E-mail:
@@ -55,19 +68,6 @@
 								data-ng-disabled="!form.email || !form.password">
 							<i class="fa fa-fw fa-sign-in"></i>
 							CADASTRAR
-						</button>
-					</div>
-					<div class="form__field text-center">
-						<div class="divider divider--horizontal">
-							OU ENTÃO
-						</div>
-					</div>
-					<div class="form__field">
-						<button class="form__button btn btn--wide btn--blue-facebook"
-								type="button"
-								data-ng-click="facebookRegister()">
-							CADASTRAR COM O SEU
-							<i class="fa fa-fw fa-lg fa-facebook-official"></i>
 						</button>
 					</div>
 				</form>

@@ -14,8 +14,8 @@ angular.module('rastros')
 		authentication.login(form.email, form.password);
 	};
 
-	$scope.facebookLogin = function () {
-		authentication.facebookLogin();
+	$scope.facebook = function () {
+		authentication.facebook();
 	};
 
 	$scope.goToRegister = function () {

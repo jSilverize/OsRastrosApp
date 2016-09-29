@@ -3,6 +3,8 @@
 angular.module('rastros')
 .controller('HomeController', function ($scope, loader, flow, futliga) {
 
+	$scope.nextMatches = null;
+
 	$scope.matches = function () {
 		var loadMsg = 'Calendário da Futliga';
 
