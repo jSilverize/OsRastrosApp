@@ -21,18 +21,13 @@ angular.module('rastros')
             templateUrl: 'app/templates/404-template.html',
             controller : '404Controller',
         })
-        .when('/meu/login', {
-            templateUrl: 'app/templates/auth-login-template.html',
-            controller : 'LoginController',
+        .when('/login', {
+            templateUrl: 'app/templates/auth-template.html',
+            controller : 'AuthController',
             authPage   : true,
         })
-        .when('/meu/cadastro', {
-            templateUrl: 'app/templates/auth-register-template.html',
-            controller : 'RegisterController',
-            authPage   : true,
-        })
-        .when('/meu/perfil', {
-            templateUrl  : 'app/templates/garage/garage-template.html',
+        .when('/perfil', {
+            templateUrl  : 'app/templates/profile-template.html',
             controller   : 'ProfileController',
             authenticated: true,
         })

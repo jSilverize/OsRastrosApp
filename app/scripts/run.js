@@ -2,7 +2,6 @@
 
 angular.module('rastros')
 .run(function ($rootScope, routeChange) {
-
     /**
      * When some route faile to resolve
      */

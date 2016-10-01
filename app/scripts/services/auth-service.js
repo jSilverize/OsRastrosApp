@@ -2,14 +2,16 @@
 
 angular.module('rastros')
 .factory('authentication', function ($rootScope, $q, fireb, user, loader, flow) {
-	var firebAuth = firebase.auth();
+	var auth = firebase.auth();
 	var factory   = {};
 
 	factory.login = function (email, password) {
-		var loadMsg = 'Autenticando';
+		var loadMsg    = 'Autenticando';
+		var credential = new firebase.auth.EmailAuthProvider.credential(email, password);
+
 		loader.start(loadMsg);
 
-		firebAuth.signInWithEmailAndPassword(email, password)
+		auth.signInWithEmailAndPassword(email, password)
 			.then(function () {
 				flow.goBack();
 				loader.stop(loadMsg);
@@ -20,11 +22,11 @@ angular.module('rastros')
 			});
 	};
 
-	factory.logout = function () {		
+	factory.logout = function () {
 		var loadMsg = 'Saindo';
 		loader.start(loadMsg);
 
-		firebAuth.signOut()
+		auth.signOut()
 			.then(function () {
 				loader.stop(loadMsg);
 			}, function(error) {
@@ -34,42 +36,47 @@ angular.module('rastros')
 	};
 
 	factory.facebook = function () {
-		var loadMsg  = 'Autenticando com Facebook';
 		var provider = new firebase.auth.FacebookAuthProvider();
+
+		factory.provider(provider, 'Facebook');
+	};
+
+	factory.twitter = function () {
+		var provider = new firebase.auth.TwitterAuthProvider();
+
+		factory.provider(provider, 'Twitter');
+	};
+
+	factory.provider = function (provider, title) {
+		var loadMsg  = 'Autenticando com ' + title;
+
+		provider.addScope('email');
 
 		loader.start(loadMsg);
 
-		firebAuth.signInWithPopup(provider)
+		auth.signInWithPopup(provider)
 			.then(function (result) {
-				var _token = result.credential ? result.credential.accessToken : null;
-				var _user  = result.user;
-
-				user.data  		  = _user.providerData[0];
-				user.data.fbToken = _token;
+				user.data = result.user;
 
 				$rootScope.$broadcast('user:changed', user.data);
 
 				loader.stop(loadMsg);
 			}).catch(function (error) {
-				var credential;
 				var code       = error.code;
-				var message    = error.message;					
-				var email      = error.email; 		// The email of the user's account used.					
+				var message    = error.message;
+				var email      = error.email; 		// The email of the user's account used.
 				var credential = error.credential; 	// The firebase.auth.AuthCredential type that was used.
 
 				$rootScope.$broadcast('user:changed', null);
 
-				loader.stop(loadMsg);					
+				loader.stop(loadMsg);
 				loader.error(''+ code + ': ' + message + '<br />(' + email + ')');
 			});
 	};
 
-	firebAuth.onAuthStateChanged(function (_user) {
+	auth.onAuthStateChanged(function (_user) {
 		if (_user) {
-			user.data = _user.providerData[0];
-
-			console.log(_user);
-
+			user.data = _user;
 			$rootScope.$broadcast('user:changed', user.data);
 			return;
 		}

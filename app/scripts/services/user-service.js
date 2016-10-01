@@ -1,21 +1,22 @@
 'use strict';
 
 angular.module('rastros')
-.factory('user', function ($rootScope, $timeout, fireb, loader, flow) {
-	var firebAuth = firebase.auth();
-	
+.factory('user', function ($rootScope, $timeout, loader, flow) {
+	var auth = firebase.auth();
+
 	var factory = {
-		data: null
+		data: null,
+		test: {},
 	};
 
 	factory.isLogged = function () {
 		var user = factory.data;
 
-		if (user) {			
+		if (user) {
 			$rootScope.$broadcast('user:logged', user);
 			return user;
 		}
-		
+
 		return null;
 	};
 
@@ -23,7 +24,7 @@ angular.module('rastros')
 		var loadMsg = 'Cadastrando';
 		loader.start(loadMsg);
 
-		firebAuth.createUserWithEmailAndPassword(email, password)
+		auth.createUserWithEmailAndPassword(email, password)
 			.catch(function(error) {
 				loader.error(error.message);
 			});

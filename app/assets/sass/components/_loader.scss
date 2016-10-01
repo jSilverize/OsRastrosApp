@@ -36,11 +36,13 @@ $this: ".loader";
         position: relative;
 
         &__spinner {
-            width : 100px;
-            height: 100px;
+            width : 80px;
+            height: 80px;
 
             margin : 0 0 15px;
             padding: 17px 18px;
+
+            border-radius   : 50%;
 
             animation: fadeInDown 1s;
 
@@ -57,13 +59,12 @@ $this: ".loader";
             margin-left : auto;
             margin-right: auto;
 
-            border-radius   : 50%;
             background-color: $color-white;
         }
 
         &__spinner__image {
-            width : 64px;
-            height: 64px;
+            width : 44px;
+            height: 44px;
         }
 
         &__spinner,

@@ -1,0 +1,76 @@
+<header class="header">
+	<container>
+		<h1 class="header__title">
+			Meu Perfil
+		</h1>
+	</container>
+</header>
+
+<section class="section">
+	<container>
+		<div class="row">
+			<div class="col-lg-8 col-md-6 col-sm-12">
+				<h2 class="section__title">
+					Informações
+				</h2>
+				<form class="form form--vertical">
+					<div class="form__field"
+						 data-ng-if="user.photoURL">
+						<label class="form__label">
+							Foto
+						</label>
+						<img class="img img--circle"
+							 data-ng-src="{{ user.photoURL }}"
+							 />
+					</div>
+					<div class="form__field"
+						 data-ng-if="user.displayName">
+						<label class="form__label">
+							Nome
+						</label>
+						<div data-ng-bind="user.displayName"></div>
+					</div>
+					<div class="form__field"
+						 data-ng-if="user.email">
+						<label class="form__label">
+							Endereço de e-mail
+						</label>
+						<div data-ng-bind="user.email"></div>
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<h2 class="section__title">
+					Opções da conta (breve)
+				</h2>
+				<div class="form__field">
+					<button class="form__button btn btn--wide btn--blue-facebook"
+							type="button"
+							data-ng-click="facebookLink()"
+							disabled>
+						<i class="fa fa-fw fa-lg fa-facebook-official"></i>
+						CONECTAR AO FACEBOOK
+					</button>
+				</div>
+				<div class="form__field">
+					<button class="form__button btn btn--wide btn--blue"
+							type="button"
+							data-ng-click="twitterLink()"
+							disabled>
+						<i class="fa fa-fw fa-lg fa-twitter"></i>
+						CONECTAR AO TWITTER
+					</button>
+				</div>
+				<div class="form__field">
+					<button class="form__button btn btn--wide btn--red"
+							type="button"
+							data-ng-click="googleLink()"
+							disabled>
+						<i class="fa fa-fw fa-lg fa-google-plus"></i>
+						CONECTAR AO GOOGLE+
+					</button>
+				</div>
+			</div>
+		</div>
+	</container>
+</section>

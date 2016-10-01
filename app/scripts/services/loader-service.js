@@ -2,7 +2,6 @@
 
 angular.module('rastros')
 .factory('loader', function ($timeout) {
-
     var factory = {
         activities: [],
         errors    : [],

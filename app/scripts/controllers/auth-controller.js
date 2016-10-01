@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rastros')
-.controller('LoginController', function ($scope, authentication, user, fireb, flow) {
+.controller('AuthController', function ($scope, authentication, user, fireb, flow) {
 	$scope.form = {};
 
 	$scope.login = function () {
@@ -18,13 +18,9 @@ angular.module('rastros')
 		authentication.facebook();
 	};
 
-	$scope.goToRegister = function () {
-		flow.goTo('/meu/cadastro');
-	};
-
 	$scope.$on('user:changed', function (event, data) {
 		$scope.user = data;
-		
+
 		if ($scope.user) {
 			flow.goBack();
 		}
