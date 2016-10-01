@@ -15,47 +15,49 @@
 		<div class="card match"
 			 data-ng-repeat="match in nextMatches">
 
-			<div class="match__teams">
-
-				<figure class="match__team">
-					<img class="match__team__logo"
-						 data-ng-src="{{ match.opponent.logo }}"
-						 alt="{{ match.opponent.title }}" />
-					<legend class="match__team__title">
-						{{ match.opponent.title }}
-					</legend>
-				</figure>
-
-				<div class="match__versus">×</div>
-
-				<figure class="match__team">
-					<img class="match__team__logo"
-						 data-ng-src="./assets/images/os-rastros.gif"
-						 alt="Os Rastros" />
-					<legend class="match__team__title">
-						Os Rastros
-					</legend>
-				</figure>
-
-			</div>
-
-			<div class="match__details">
-				<div class="match__details__item">
-					<i class="fa fa-fw fa-list match__details__item__icon"></i>
-					<strong>DETALHES</strong>
+			<div class="row">
+				<div class="col-lg-8 col-sm-7">
+					<div class="match__teams">
+						<figure class="match__team">
+							<img class="match__team__logo"
+								 data-ng-src="{{ match.opponent.logo }}"
+								 alt="{{ match.opponent.title }}" />
+							<legend class="match__team__title">
+								{{ match.opponent.title }}
+							</legend>
+						</figure>
+						<div class="match__versus">×</div>
+						<figure class="match__team">
+							<img class="match__team__logo"
+								 data-ng-src="./assets/images/os-rastros.gif"
+								 alt="Os Rastros" />
+							<legend class="match__team__title">
+								Os Rastros
+							</legend>
+						</figure>
+					</div>
 				</div>
-				<div class="match__details__item">
-					<i class="fa fa-fw fa-calendar match__details__item__icon"></i>
-					{{ match.date.formatted }}
+
+				<div class="col-lg-4 col-sm-5">
+					<div class="match__details">
+						<div class="match__details__item">
+							<i class="fa fa-fw fa-list match__details__item__icon"></i>
+							<strong>DETALHES</strong>
+						</div>
+						<div class="match__details__item">
+							<i class="fa fa-fw fa-calendar match__details__item__icon"></i>
+							{{ match.date.formatted }}
+						</div>
+						<div class="match__details__item">
+							<i class="fa fa-fw fa-clock-o match__details__item__icon"></i>
+							{{ match.date.time }}, bola rolando
+						</div>
+						<div class="match__details__item">
+							<i class="fa fa-fw fa-map-marker match__details__item__icon"></i>
+							{{ match.location.stadium }}
+						</div>
+					</div>
 				</div>
-				<div class="match__details__item">
-					<i class="fa fa-fw fa-clock-o match__details__item__icon"></i>
-					{{ match.date.time }}, bola rolando
-				</div>
-				<div class="match__details__item">
-					<i class="fa fa-fw fa-map-marker match__details__item__icon"></i>
-					{{ match.location.stadium }}
-				</div>				
 			</div>
 
 		</div>

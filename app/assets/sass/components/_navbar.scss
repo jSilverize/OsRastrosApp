@@ -70,10 +70,10 @@ $this: ".navbar";
             &-toggle,
             &-settings {
                 display: none;
-                float  : left;
+                float  : right;
 
-                margin : 0 0 0 -#{$container-padding};
-                padding: 16px 15px;
+                margin : 0;
+                padding: 12px;
                 height : $navbar-min-height;
 
                 font-size: 24px;
@@ -91,11 +91,6 @@ $this: ".navbar";
                     outline         : 0;
                     background-color: $color-white-smoke;
                 }
-            }
-
-            &-settings {
-                float : right;
-                margin: 0 -#{$container-padding} 0 0;
             }
 
             &.list {
@@ -143,7 +138,6 @@ $this: ".navbar";
             }
 
             &-user {
-                max-width: 300px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;

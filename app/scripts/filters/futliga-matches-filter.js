@@ -92,7 +92,7 @@ angular.module('rastros')
                         match.date.day         = day;
                         match.date.weekDay     = weekDay;
                         match.date.moment      = momentDate;
-                        match.date.formatted   = momentDate.format('dddd, DD [de] MMMM');
+                        match.date.formatted   = momentDate.format('dddd, DD [de] MMMM [de] YYYY');
                         match.location.stadium = stadium;
 
                         // Team title and ID

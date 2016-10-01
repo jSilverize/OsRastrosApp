@@ -1,6 +1,6 @@
 {
-  "name"      : "Família Rastros App",
-  "short_name": "Rastros App",
+  "name"      : "Os Rastros",
+  "short_name": "Os Rastros",
   "icons": [{
     "src": "assets/images/icons/icon-128x128.png",
       "sizes": "128x128",
@@ -21,7 +21,8 @@
       "src": "assets/images/icons/icon-256x256.png",
       "sizes": "256x256",
       "type": "image/png"
-    }],
+    }
+  ],
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#353535",

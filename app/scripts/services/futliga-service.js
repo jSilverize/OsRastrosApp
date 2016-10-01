@@ -1,17 +1,15 @@
 'use strict';
 
 angular.module('rastros')
-.service('futliga', function ($http, $q, $filter) {
-    var corsURL     = 'https://cors-anywhere.herokuapp.com/';
-    var futligaURL  = corsURL + 'https://futliga.com.br/';
-
-    var factory = {
+.service('futliga', function ($http, $q, $filter, urls) {
+    var futligaURL = urls.CORS + urls.FUTLIGA.INDEX + urls.FUTLIGA.NEXT_MATCHES;
+    var factory    = {
         matches: [],
     };
 
     factory.get = function () {
         var deferred    = $q.defer();
-        var calendarURL = futligaURL + 'futliga/associado/equipes/associado-equipes-obter-agenda.asp?codigo=8985';
+        var calendarURL = futligaURL;
 
         $http.get(calendarURL)
             .then(function (response) {
