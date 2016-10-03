@@ -1,65 +1,88 @@
 <header class="header">
-	<container>
+	<div class="container">
 		<h1 class="header__title">
 			Futebol
 		</h1>
-	</container>
+	</div>
 </header>
-<section class="section"
+<section class="section">
+	<div class="container"
 		 data-ng-if="nextMatches">
-	<container>
-		<h1 class="section__title">
+		<h4 class="section__title">
 			Próximas Partidas
-		</h1>
+		</h4>
 
-		<div class="card match"
-			 data-ng-repeat="match in nextMatches">
-
-			<div class="row">
-				<div class="col-lg-8 col-sm-7">
-					<div class="match__teams">
-						<figure class="match__team">
+		<div class="row">
+			<div class="col s12 m6 l4"
+				 data-ng-repeat="match in nextMatches">
+				<div class="card sticky-action match">
+					<div class="card-image waves-effect waves-block waves-light">
+						<img class="image activator"
+							 data-ng-src="./assets/images/match-background--{{ $odd }}.jpg"
+							 />
+						<div class="match__teams">
 							<img class="match__team__logo"
 								 data-ng-src="{{ match.opponent.logo }}"
-								 alt="{{ match.opponent.title }}" />
-							<legend class="match__team__title">
-								{{ match.opponent.title }}
-							</legend>
-						</figure>
-						<div class="match__versus">×</div>
-						<figure class="match__team">
+								 />
+							<div class="match__versus">×</div>
 							<img class="match__team__logo"
 								 data-ng-src="./assets/images/os-rastros.gif"
-								 alt="Os Rastros" />
-							<legend class="match__team__title">
-								Os Rastros
-							</legend>
-						</figure>
+								 />
+						</div>
 					</div>
-				</div>
-
-				<div class="col-lg-4 col-sm-5">
-					<div class="match__details">
-						<div class="match__details__item">
-							<i class="fa fa-fw fa-list match__details__item__icon"></i>
-							<strong>DETALHES</strong>
+					<div class="card-content">
+						<div class="card-title activator grey-text text-darken-4">
+							{{ match.opponent.title }}
+							<i class="material-icons right">more_vert</i>
 						</div>
-						<div class="match__details__item">
-							<i class="fa fa-fw fa-calendar match__details__item__icon"></i>
-							{{ match.date.formatted }}
+					</div>
+					<div class="card-action">
+						<button class="waves-effect waves-light btn-flat tooltiped"
+						   		data-ng-click="going()"
+						   		disabled>
+					   		<i class="material-icons left">thumb_up</i>
+							EU VOU!
+							<small>
+								(em breve)
+							</small>
+						</button>
+					</div>
+					<div class="card-reveal">
+						<div class="card-title grey-text text-darken-4">
+							{{ match.opponent.title }}
+							<i class="material-icons right">close</i>
 						</div>
-						<div class="match__details__item">
-							<i class="fa fa-fw fa-clock-o match__details__item__icon"></i>
-							{{ match.date.time }}, bola rolando
-						</div>
-						<div class="match__details__item">
-							<i class="fa fa-fw fa-map-marker match__details__item__icon"></i>
-							{{ match.location.stadium }}
+						<div class="divider"></div>
+						<div class="match__details grey-text text-darken-3">
+							<div class="match__details__item">
+								<i class="material-icons match__details__item__icon">today</i>
+								{{ match.date.formatted }}
+							</div>
+							<div class="match__details__item">
+								<i class="material-icons match__details__item__icon">schedule</i>
+								{{ match.date.time }}, bola rolando
+							</div>
+							<div class="match__details__item">
+								<i class="material-icons match__details__item__icon">location_on</i>
+								{{ match.location.stadium }}
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
-	</container>
+	</div>
+
+	<div class="container"
+		 data-ng-if="!nextMatches">
+		<h4 class="section__title">
+			É, dom...
+		</h4>
+		<p class="flow-text">
+			Deu ruim tentando carregar os próximos jogos da futliga.
+		</p>
+		<p class="flow-text">
+			Mas acontece, falaê?!
+		</p>
+	</div>
 </section>

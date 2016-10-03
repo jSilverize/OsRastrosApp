@@ -1,294 +1,206 @@
-/* Navbar
--------------------------------------------------------------------------- */
-$this: ".navbar";
-#{$this} {
+nav {
+  @extend .z-depth-1;
+  width      : 100%;
+  height     : $navbar-height-mobile;
+  line-height: $navbar-height-mobile;
+
+  color           : $navbar-font-color;
+  background-color: $primary-color;
+
+  a {
+    color: $navbar-font-color;
+  }
+
+  i,
+  [class^="mdi-"], [class*="mdi-"],
+  i.material-icons {
+    display: block;
+    font-size: 2rem;
+    height: $navbar-height-mobile;
+    line-height: $navbar-height-mobile;
+  }
+
+  .nav-wrapper {
     position: relative;
-    width: 100%;
-    min-height: $navbar-min-height;
-    @include transition();
-    background-color: $color-white;
-    color: $color-blue;
-    box-shadow: 0 4px 5px 0 rgba($color-black, .1);
-    @include border-radius(3px);
+    height: 100%;
+  }
 
-    &-nav {
-        float: left;
-        width: 100%;
-        margin: 0;
-        padding: {
-            left: 20px;
-            right: 20px;
-        }
+  @media #{$large-and-up} {
+    a.button-collapse { display: none; }
+  }
 
-        &:before {
-            display: table;
-            content: " ";
-        }
 
-        #{$this}-brand {
-            color: $color-dark-grey;
-            float: left;
-            max-width: 250px;
-            padding: 11px 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-size: 18px;
-            line-height: 1.3;
-            font-weight: 300;
-            text-decoration: none;
-            outline: 0;
-            cursor: pointer;
-            @include transition;
+  // Collapse button
+  .button-collapse {
+    float: left;
+    position: relative;
+    z-index: 1;
+    height: $navbar-height-mobile;
 
-            &-logo {
-                width: 32px;
-                height: 32px;
-                margin: -3px 5px -9px 0;
-            }
+    i {
+      font-size: 2.7rem;
+      height: $navbar-height-mobile;
+      line-height: $navbar-height-mobile;
+    }
+  }
 
-            small {
-                font-size: 50%;
-                opacity: 0.5;
-            }
 
-            &:hover {
-                color: lighten($color-dark-grey, 25%);
-            }
-        }
+  // Logo
+  .brand-logo {
+    position: absolute;
+    color: $navbar-font-color;
+    display: inline-block;
+    font-size: $navbar-brand-font-size;
+    padding: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: .25s;
 
-        #{$this}-menu {
-            float: right;
-            margin: 0;
-            list-style: none !important;
-
-            &:before {
-                display: table;
-                content: " ";
-            }
-
-            &-toggle,
-            &-settings {
-                display: none;
-                float  : right;
-
-                margin : 0;
-                padding: 12px;
-                height : $navbar-min-height;
-
-                font-size: 24px;
-                color    : $color-dark-grey;
-
-                cursor: pointer;
-
-                border    : 0;
-                outline   : 0;
-                background: none;
-
-                &:hover,
-                &:active,
-                &:focus {
-                    outline         : 0;
-                    background-color: $color-white-smoke;
-                }
-            }
-
-            &.list {
-                font-size: 14px;
-                line-height: 1.5;
-
-                .list-border,
-                .list-item,
-                .list-item-link {
-                    float: left;
-                    margin: 0;
-                    height: $navbar-min-height;
-                }
-
-                .list-border {
-                    border-left: 1px solid rgba($color-black, .1);
-                    margin: {
-                        left : 10px;
-                        right: 10px;
-                    }
-                }
-
-                .list-item {
-                    padding: 0;
-
-                    &-link {
-                        padding: 20px 10px;
-
-                        &:hover,
-                        &:focus,
-                        &:active,
-                        &.active {
-                            color: lighten($color-blue, 25%);
-                        }
-                    }
-
-                    &.active {
-                        color: lighten($color-blue, 25%);
-                    }
-
-                    .btn {
-                        margin: 5px 0;
-                    }
-                }
-            }
-
-            &-user {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-
-                &-avatar {
-                    display: inline-block;
-                    float: right;
-                    width: 32px;
-                    height: 32px;
-                    margin: -8px -2px -8px 12px;
-                    border: 1px solid $color-light-grey;
-                    @include border-radius(50%);
-                }
-            }
-        }
+    &.center {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    &--inverted {
-        background-color: $color-black;
-        color: $color-white;
-
-        #{$this} {
-            &-brand {
-                color: $color-white;
-            }
-        }
-
-        #{$this}-nav {
-            #{$this}-menu {
-
-                &-toggle,
-                &-settings {
-                    color: $color-white;
-
-                    &:hover,
-                    &:active,
-                    &:focus {
-                        outline         : 0;
-                        background-color: darken($color-primary, 5%);
-                    }
-                }
-
-                &.list {
-                    .list-border {
-                        border-color: rgba($color-white, .25);
-                    }
-
-                    .list-item,
-                    .list-item-link {
-                        color: $color-white;
-
-                        &:hover,
-                        &:focus,
-                        &:active,
-                        &.active {
-                            color: $color-light-grey;
-                        }
-                    }
-                }
-
-                &-item {
-                    color: $color-white;
-
-                    &-link:not(.button) {
-                        color: $color-white;
-                    }
-
-                    &.dropdown {
-                        &:after {
-                            border-top-color: $color-white;
-                        }
-                    }
-                }
-
-                &-border {
-                    border-left: 1px solid rgba($color-white, .2);
-                }
-
-                &-user {
-                    &-avatar {
-                        background-color: $color-white;
-                        border-color: $color-white;
-                    }
-                }
-            }
-        }
+    &:hover {
+      opacity: .75;
     }
 
-    &--static-top,
-    &--fixed-top {
-        top: 0;
-        right: 0;
-        left: 0;
-        @include border-radius(0);
+    @media #{$medium-and-down} {
+      left: 50%;
+      transform: translateX(-50%);
 
-        #{$this} {
-            &-nav {
-                padding: {
-                    left: 0;
-                    right: 0;
-                }
-            }
-        }
+      &.left, &.right {
+        padding: 0;
+        transform: none;
+      }
+
+      &.left { left: 0.5rem; }
+      &.right {
+        right: 0.5rem;
+        left: auto;
+      }
     }
 
-    &--fixed-top {
-        position: fixed;
-        z-index: 1030;
+    &.right {
+      right: 0.5rem;
+      padding: 0;
     }
 
-    .button {
-        background-color: $color-secondary;
+    i,
+    [class^="mdi-"], [class*="mdi-"],
+    i.material-icons {
+      float: left;
+      margin-right: 15px;
     }
+
+    img {
+      display       : inline-block;
+      vertical-align: middle;
+
+      margin: -5px 5px 0 0;
+      height: 40px;
+    }
+  }
+
+  // Avatar
+  .avatar {
+    display: inline-block;
+    vertical-align: middle;
+    margin: -5px 0 0 5px;
+  }
+
+
+  // Navbar Links
+  ul {
+    margin: 0;
+
+    li {
+      transition: background-color .3s;
+      float: left;
+      padding: 0;
+
+      &.active {
+        background-color: rgba(0,0,0,.1);
+      }
+    }
+    a {
+      transition: background-color .3s;
+      font-size: $navbar-font-size;
+      color: $navbar-font-color;
+      display: block;
+      padding: 0 15px;
+      cursor: pointer;
+
+      &.btn, &.btn-large, &.btn-flat, &.btn-floating {
+        margin-top: -2px;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+      &:hover {
+        background-color: rgba(0,0,0,.1);
+      }
+    }
+
+    &.left {
+      float: left;
+    }
+  }
+
+  // Navbar Search Form
+  form {
+    height: 100%;
+  }
+
+  .input-field {
+    margin: 0;
+    height: 100%;
+
+    input {
+      height: 100%;
+      font-size: 1.2rem;
+      border: none;
+      padding-left: 2rem;
+
+      &:focus, &[type=text]:valid, &[type=password]:valid,
+      &[type=email]:valid, &[type=url]:valid, &[type=date]:valid {
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    label {
+      top: 0;
+      left: 0;
+
+      i {
+        color: rgba(255,255,255,.7);
+        transition: color .3s;
+      }
+      &.active i { color: $navbar-font-color; }
+      &.active {
+        transform: translateY(0);
+      }
+    }
+  }
 }
 
-@include phone {
-    #{$this} {
-        &-nav {
-            #{$this}-menu {
-                display : block;
+// Fixed Navbar
+.navbar-fixed {
+  position: relative;
+  height: $navbar-height-mobile;
+  z-index: 998;
 
-                width  : 100%;
-                padding: 0 0 10px;
-
-                background-color: $color-black;
-
-                &-toggle,
-                &-settings {
-                    display: block;
-                }
-
-                &.list {
-                    .list-item {
-                        display: block;
-                        width  : 100%;
-
-                        .btn {
-                            display: block;
-                            width  : 100%;
-                        }
-                    }
-
-                    .list-border {
-                        width : 100%;
-                        height: 1px;
-                        border-top : 1px solid;
-                        border-left: none;
-                        margin: 5px 0 !important;
-                    }
-                }
-            }
-        }
-    }
+  nav {
+    position: fixed;
+  }
+}
+@media #{$medium-and-up} {
+  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+    height: $navbar-height;
+    line-height: $navbar-height;
+  }
+  .navbar-fixed {
+    height: $navbar-height;
+  }
 }
