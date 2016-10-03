@@ -1,0 +1,51 @@
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="userView">
+            <img class="background"
+                 data-ng-src="./assets/images/side-nav-background.jpg"
+                 />
+            <a>
+                <img class="circle"
+                     data-ng-src="{{ user.photoURL }}"
+                     data-ng-if="user.photoURL"
+                     />
+                <img class="circle"
+                     data-ng-src="./assets/images/os-rastros.gif"
+                     data-ng-if="!user.photoURL"
+                     />
+            </a>
+            <a data-ng-if="user.displayName">
+                <span class="white-text name">
+                    {{ user.displayName }}
+                </span>
+            </a>
+            <a data-ng-if="user.email">
+                <span class="white-text email">
+                    {{ user.email }}
+                </span>
+            </a>
+        </div>
+        <div class="row stripes">
+            <div class="col s4 green"></div>
+            <div class="col s4 yellow"></div>
+            <div class="col s4 red"></div>
+        </div>
+    </li>
+    <li>
+        <a class="waves-effect"
+           data-ng-click="goTo('/perfil')">
+            <i class="material-icons">person_pin</i>
+            Minha Conta
+        </a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <a class="waves-effect"
+           data-ng-click="logout()">
+            <i class="material-icons">power_settings_new</i>
+            Sair
+        </a>
+    </li>
+</ul>

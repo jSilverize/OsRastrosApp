@@ -1,65 +1,75 @@
 <header class="header">
-	<container>
+	<div class="container">
 		<h1 class="header__title">
-			Acesso
+			Entrar
 		</h1>
-	</container>
+	</div>
 </header>
 <section class="section">
-	<container>
+	<div class="container">
 		<div class="row">
-			<div class="col-lg-4 col-md-3"></div>
-			<div class="col-lg-4 col-md-6 col-sm-12">
-				<form class="form form--vertical"
-					  data-ng-submit="login()">
-					<div class="form__field">
-						<button class="form__button btn btn--wide btn--blue-facebook"
+			<div class="col s12 m12 l4">
+				<form data-ng-submit="login()">
+					<div class="section">
+						<button class="waves-effect waves-light btn block"
 								type="button"
 								data-ng-click="facebook()">
-							ENTRAR COM O SEU
-							<i class="fa fa-fw fa-lg fa-facebook-official"></i>
+							ENTRAR COM O SEU FACEBOOK
 						</button>
 					</div>
-					<div class="form__field text-center">
-						<div class="divider divider--horizontal">
-							OU ENTÃO
-						</div>
+					<div class="section text-center">
+						OU ENTÃO
 					</div>
-					<div class="form__field">
+					<div class="section input-field">
+						<i class="material-icons prefix">email</i>
+						<input type="email"
+							   name="email"
+							   id="email"
+							   required
+							   data-ng-model="form.email" />
 						<label class="form__label"
 							   for="email">
 							E-mail:
 						</label>
-						<input class="form__control"
-							   type="email"
-							   name="email"
-							   id="email"
-							   required
-							   placeholder="voce@exemplo.com"
-							   data-ng-model="form.email" />
 					</div>
-					<div class="form__field">
+					<div class="section input-field">
+						<i class="material-icons prefix">lock</i>
+						<input type="password"
+							   id="password"
+							   required
+							   data-ng-model="form.password" />
 						<label class="form__label"
 							   for="password">
 							Senha:
 						</label>
-						<input class="form__control"
-							   type="password"
-							   id="password"
-							   required
-							   placeholder="**************"
-							   data-ng-model="form.password" />
 					</div>
-					<div class="form__field">
-						<button class="form__button btn btn--wide btn--green"
+					<div class="section">
+						<button class="waves-effect waves-light btn block"
 								type="submit"
 								data-ng-disabled="!form.email || !form.password">
-							<i class="fa fa-fw fa-sign-in"></i>
-							LOGIN
+							ENTRAR
 						</button>
 					</div>
 				</form>
 			</div>
+			<div class="col l2 hidden-on-med-down"></div>
+			<div class="col m12 l6">
+				<div>
+					<i class="large material-icons">recent_actors</i>
+					<h4>
+						Não tem cadastro?
+					</h4>
+					<p class="flow-text">
+						Sem problemas!
+					</p>
+					<p class="flow-text">
+						Basta "entrar", seja com
+						o seu facebook ou com e-mail e senha, que
+						o cadastro será efetuado na primeira
+						vez em que você acessar.
+					</p>
+				</div>
+			</div>
 		</div>
-	</container>
+	</div>
 </section>

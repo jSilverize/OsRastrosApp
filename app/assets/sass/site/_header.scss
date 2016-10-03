@@ -1,0 +1,24 @@
+$this: ".header";
+#{$this} {
+	display: block;
+	padding: 30px 0 40px;
+
+	background-color: color("grey", "lighten-3");
+
+	&__title {
+		font-size  : 48px;
+		line-height: 1.25;
+		margin     : 10px 0;
+		color      : color("grey", "base");
+	}
+
+
+	@include phone {
+		padding: 16px 0 17px;
+		margin-bottom: -3px;
+
+		&__title {
+			font-size: 24px;
+		}
+	}
+}

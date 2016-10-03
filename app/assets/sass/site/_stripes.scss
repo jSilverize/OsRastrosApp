@@ -1,0 +1,11 @@
+$this: ".stripes";
+
+#{$this} {
+	&.row {
+		margin-bottom: 10px;
+	}
+
+	.col {
+		min-height: 5px;
+	}
+}

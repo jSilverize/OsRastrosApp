@@ -1,27 +1,63 @@
-$this: ".card";
-
-#{$this} {
-    margin : 0;
-    padding: 20px;
-
-    border-radius: 4px;
-
-    color     : $color-primary;
-    background: $color-white;
-    box-shadow: 0 2px 8px $color-black;
-}
-
 $this: ".match";
 #{$this} {
+    .divider {
+        margin: 5px 0 20px;
+    }
+
     &.card {
-        margin : 40px auto;
+        .card-image {
+            .image {
+                opacity: .75;
+                transition: opacity .25s linear;
+            }
+        }
+
+        &:hover {
+            .card-image {
+                .image {
+                    opacity: .85;
+                }
+            }
+        }
+
+        .card-reveal {
+            .card-title {
+                position: relative;
+
+                .material-icons {
+                    &.right {
+                        position: absolute;
+
+                        right: 0;
+                        top  : 50%;
+                        transform: translateY(-50%);
+
+                        margin-top: -5px;
+                    }
+                }
+            }
+        }
+
+        .card-action {
+            padding: 10px 0;
+
+            .btn-flat {
+                display: block;
+                margin: 0 auto;
+            }
+        }
     }
 
     &__teams {
-        position: relative;
-        padding : 25px 0;
+        position: absolute !important;
+        top  : calc(50% - (75px / 2));
+        width: 100%;
+    }
 
-        border-right: 1px solid $color-light-grey;
+    &__team,
+    &__versus {
+        display: inline-block;
+        vertical-align: middle;
     }
 
     &__team,
@@ -29,61 +65,28 @@ $this: ".match";
         text-align: center;
     }
 
-    &__team,
-    &__versus {
-        display: inline-block;
+    &__team {
         margin : 0;
         padding: 0;
-    }
-
-    &__versus {
-        position : absolute;
-        top      : 50%;
-        transform: translateY(-50%);
-
-        width: 1%;
-    }
-
-    &__team {
-        position: relative;
-        vertical-align: top;
-        width: 48%;
-
-        &:last-of-type {
-            margin-left: 2%;
-        }
 
         &__logo {
             width : 75px;
             height: 75px;
+
+            border-radius: 6px;
         }
+    }
 
-        &__logo,
-        &__title {
-            position: relative;
-            display : block;
-            margin-right: auto;
-            margin-left : auto;
-        }
+    &__versus {
+        margin: -62px 10px 0;
 
-        &__title {
-            right: 0;
-            left : 0;
-
-            font-size  : 14px;
-            line-height: 1.45;
-            font-weight: bold;
-
-            text-align    : center;
-            text-transform: uppercase;
-
-            margin-top: 5px;
-        }
-
+        font-size: 42px;
+        text-shadow: 0 0 6px color("shades", "black");
+        color: color("shades", "white");
     }
 
     &__details {
-        margin : 20px 0;
+        margin : 8px 0;
 
         text-align: center;
 
@@ -115,25 +118,8 @@ $this: ".match";
     }
 
     @include phoneAndTablet {
-        &.card {
-            margin: 20px auto;
-        }
-
-        &__teams {
-            padding: 10px 0 0;
-            margin-top  : -5px;
-            border-right: 0;
-        }
-
         &__details {
             margin: 12px 0 5px;
-        }
-
-        &__team {
-            &__title {
-                margin-top   : 5px;
-                margin-bottom: 8px;
-            }
         }
     }
 }

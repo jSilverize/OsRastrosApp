@@ -1,0 +1,20 @@
+$this: ".profile";
+
+#{$this} {
+	&.card {
+		&.horizontal {
+			.card-image {
+				line-height: 0;
+
+				img {
+					border-top-left-radius   : 3px;
+					border-bottom-left-radius: 3px;
+				}
+			}
+		}
+	}
+
+	.divider {
+		margin: 10px 0;
+	}
+}
