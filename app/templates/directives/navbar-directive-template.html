@@ -1,65 +1,44 @@
-<div class="navbar-fixed">
+<md-toolbar>
+	<div layout="row">
+		<div flex="15" hide-xs></div>
+		<div flex class="md-toolbar-tools">
+			<img class="navbar-brand-logo"
+		   		 width="40" height="40"
+		   		 data-ng-src="./assets/images/icons/icon-60x60.png" />
+			<h2 title="Início"
+			    data-ng-click="goTo('/')">
+				<span>Os Rastros</span>
+			</h2>
+			<span flex></span>
+			<md-button class="md-raised"
+				aria-label="Entrar"
+				data-ng-show="!user"
+				data-ng-click="goTo('/login')"
+				title="Entrar"
+				hide-xs>
+	   			Entrar
+			</md-button>
+			<md-button class="md-icon-button"
+			    aria-label="Entrar"
+			    data-ng-show="!user"
+			    data-ng-click="goTo('/login')"
+			    title="Entrar"
+			    hide-sm hide-md hide-lg>
+			   	<md-icon aria-label="input"
+			   			 class="material-icons">input</i>
+			</md-button>
 
-	<nav>
-
-		<div class="container">
-
-			<div class="nav-wrapper">
-
-				<a class="brand-logo left"
-				   title="Início"
-				   data-ng-click="goTo('/')">
-				   <img class="navbar-brand-logo"
-				   		width="40" height="40"
-				   		data-ng-src="./assets/images/icons/icon-60x60.png" />
-					Os Rastros
-				</a>
-
-				<a class="side-nav-toggle button-collapse right"
-				   data-ng-show="user"
-				   data-activates="slide-out">
-				   	<i class="material-icons">menu</i>
-			   	</a>
-
-				<a class="waves-effect waves-light button-collapse right"
-				   data-ng-show="!user"
-				   data-ng-click="goTo('/login')"
-				   title="Entrar">
-				   	<i class="material-icons">input</i>
-			   	</a>
-
-				<ul class="right hide-on-med-and-down">
-					<li data-ng-show="!user">
-						<a class="waves-effect waves-light btn"
-						   data-ng-click="goTo('/login')">
-							Entrar
-						</a>
-					</li>
-					<li data-ng-show="user">
-						<a class="side-nav-toggle tooltipped"
-						   data-position="left"
-						   data-delay="25"
-						   data-tooltip="Ver seu perfil"
-						   data-activates="slide-out">
-						    <span ng-if="user.photoURL">
-							   	Salve
-								<img class="avatar circle"
-									 height="32" width="32"
-									 data-ng-src="{{ user.photoURL }}"
-									 />
-							</span>
-							<span ng-if="!user.photoURL">
-								<i class="material-icons right">person_pin</i>
-								{{ user.displayName || user.email }}
-							</span>
-						</a>
-					</li>
-				</ul>
-
-			</div>
-
+			<md-button class="md-fab md-mini md-primary"
+				aria-label="{{ user.displayName || user.email }}"
+				data-ng-show="user"
+				data-ng-click="toggleSidenav()">
+				<img class="avatar circle"
+					alt="{{ user.displayName || user.email }}"
+					data-ng-if="user.photoURL"
+					data-ng-src="{{ user.photoURL }}"
+				/>
+			</md-button>
 		</div>
-
-	</nav>
-
-</div>
+		<div flex="15" hide-xs></div>
+	</div>
+</md-toolbar>

@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('rastros')
-.directive('sideNav', function (user, authentication, flow) {
+.directive('sideNav', function (user, authentication, flow, $mdSidenav) {
 	return {
 		restrict   : 'E',
-		replace    : true,
 		templateUrl: 'app/templates/directives/side-nav-directive-template.html',
 		link       : function (scope) {
 			scope.user = user.data ? user.data : user.isLogged();
@@ -12,6 +11,10 @@ angular.module('rastros')
 			scope.$on('user:changed', function (event, data) {
 				scope.user = data;
 			});
+
+			scope.toggleSidenav = function () {
+				$mdSidenav('right').toggle();
+			};
 
 			scope.goTo = function (page) {
 				var _page = page || '/';
@@ -21,11 +24,6 @@ angular.module('rastros')
 			scope.logout = function () {
 				authentication.logout();
 			};
-
-			$('.side-nav-toggle').sideNav({
-				edge        : 'right', 	// Choose the horizontal origin
-				closeOnClick: true 		// Closes side-nav on <a> clicks, useful for Angular/Meteor
-			});
 		}
 	};
 });

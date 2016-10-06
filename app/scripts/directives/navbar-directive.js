@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rastros')
-.directive('navbar', function ($window, flow, user) {
+.directive('navbar', function ($window, flow, user, $mdSidenav) {
 	return {
 		restrict   : 'E',
 		scope      : true,
@@ -18,6 +18,10 @@ angular.module('rastros')
 			$scope.$on('user:changed', function (event, data) {
 				$scope.user = data;
 			});
+
+			$scope.toggleSidenav = function () {
+				$mdSidenav('right').toggle();
+			};
 		},
 	};
 });

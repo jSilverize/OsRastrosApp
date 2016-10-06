@@ -9,7 +9,7 @@
         <link rel="canonical" href="https://rastros-app.firebaseapp.com/" />
 
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <link rel="icon"                             href="./assets/images/icons/icon-32x32.png" />
@@ -36,8 +36,7 @@
         <meta name="msapplication-TileColor" content="#eeeeee" />
 
         <!-- build:css assets/vendor.css -->
-        <link rel="stylesheet" href="/bower_components/reset-css/reset.css" />
-        <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
+        <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
         <!-- endbuild -->
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -46,21 +45,22 @@
         <link rel="stylesheet" href="./assets/site.css">
     </head>
 
-    <body>
+    <body data-layout="column">
 
         <loader></loader>
 
-        <content>
+        <main flex>
 
-            <navbar></navbar>
-
-            <main data-ng-view></main>
+            <navbar data-flex></navbar>
 
             <side-nav></side-nav>
 
+            <md-content data-flex data-layout-padding data-ng-view>
+            </md-content>
+
             <footer></footer>
 
-        </content>
+        </main>
 
         <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
         <script>
@@ -79,12 +79,12 @@
         <!-- build:js scripts/vendor.js -->
         <script src="/bower_components/angular/angular.js"></script>
         <script src="/bower_components/angular-route/angular-route.js"></script>
+        <script src="/bower_components/angular-aria/angular-aria.js"></script>
         <script src="/bower_components/angular-animate/angular-animate.js"></script>
+        <script src="/bower_components/angular-material/angular-material.js"></script>
         <script src="/bower_components/angular-scroll/angular-scroll.js"></script>
         <script src="/bower_components/angular-ui-mask/dist/mask.js"></script>
         <script src="/bower_components/moment/moment.js"></script>
-        <script src="/bower_components/jquery/dist/jquery.js"></script>
-        <script src="/bower_components/materialize/dist/js/materialize.js"></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/scripts.js -->

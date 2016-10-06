@@ -16,7 +16,7 @@
     "animate.css": "^3.5.2",
     "reset-css": "^2.0.2011012603",
     "moment": "^2.15.1",
-    "materialize": "^0.97.7"
+    "angular-material": "^1.1.1"
   },
   "ignore": [
     "**/.*",
