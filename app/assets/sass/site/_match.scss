@@ -1,63 +1,37 @@
 $this: ".match";
 #{$this} {
-    .divider {
-        margin: 5px 0 20px;
-    }
+    position: relative;
+    padding : 15px 20px 20px;
+    margin  : 20px 0 0;
 
-    &.card {
-        .card-image {
-            .image {
-                opacity: .75;
-                transition: opacity .25s linear;
-            }
-        }
+    border       : 1px solid $color-light-grey;
+    border-radius: 4px;
 
-        &:hover {
-            .card-image {
-                .image {
-                    opacity: .85;
-                }
-            }
-        }
+    &__date {
+        text-align: center;
 
-        .card-reveal {
-            .card-title {
-                position: relative;
+        font-size  : 13px;
+        font-weight: bold;
 
-                .material-icons {
-                    &.right {
-                        position: absolute;
+        text-transform: uppercase;
 
-                        right: 0;
-                        top  : 50%;
-                        transform: translateY(-50%);
-
-                        margin-top: -5px;
-                    }
-                }
-            }
-        }
-
-        .card-action {
-            padding: 10px 0;
-
-            .btn-flat {
-                display: block;
-                margin: 0 auto;
-            }
-        }
+        margin: 0 0 10px;
     }
 
     &__teams {
-        position: absolute !important;
-        top  : calc(50% - (75px / 2));
-        width: 100%;
+        &:after {
+            content: ".";
+            visibility: hidden;
+            display: block;
+            height: 0;
+            clear: both;
+        }
     }
 
     &__team,
     &__versus {
-        display: inline-block;
-        vertical-align: middle;
+        display: block;
+        float  : left;
     }
 
     &__team,
@@ -66,23 +40,29 @@ $this: ".match";
     }
 
     &__team {
+        width  : calc(50% - 15px);
         margin : 0;
         padding: 0;
 
+        text-align: center;
+
         &__logo {
+            display: block;
+
             width : 75px;
             height: 75px;
+
+            margin: 0 auto 10px;
 
             border-radius: 6px;
         }
     }
 
     &__versus {
-        margin: -62px 10px 0;
+        width : 30px;
+        margin: 25px 0;
 
-        font-size: 42px;
-        text-shadow: 0 0 6px color("shades", "black");
-        color: color("shades", "white");
+        font-size: 36px;
     }
 
     &__details {
@@ -114,12 +94,6 @@ $this: ".match";
                     font-size: 19px;
                 }
             }
-        }
-    }
-
-    @include phoneAndTablet {
-        &__details {
-            margin: 12px 0 5px;
         }
     }
 }

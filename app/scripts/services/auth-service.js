@@ -1,13 +1,33 @@
 'use strict';
 
 angular.module('rastros')
-.factory('authentication', function ($rootScope, $q, fireb, user, loader, flow) {
-	var auth = firebase.auth();
-	var factory   = {};
+.factory('authentication', function ($rootScope, $document, $window,
+	fireb, user, loader, flow) {
+	var auth    = firebase.auth();
+	var factory = {};
+
+	factory.register = function (email, password) {
+		var loadMsg = 'Criando conta';
+
+		loader.start(loadMsg);
+
+		auth.createUserWithEmailAndPassword(email, password)
+			.then(function () {
+				flow.goBack();
+				loader.stop(loadMsg);
+			})
+			.catch(function(error) {
+				loader.stop(loadMsg);
+				loader.error(
+					'<div class="aph loader__content__error__title">Ué...</div>' +
+					'Alguma coisa deu errado tentando fazer seu cadastro, saca só:<br />' +
+					error.message
+				);
+			});
+	};
 
 	factory.login = function (email, password) {
-		var loadMsg    = 'Autenticando';
-		var credential = new firebase.auth.EmailAuthProvider.credential(email, password);
+		var loadMsg = 'Autenticando';
 
 		loader.start(loadMsg);
 
@@ -18,7 +38,11 @@ angular.module('rastros')
 			})
 			.catch(function(error) {
 				loader.stop(loadMsg);
-				loader.error(error.message);
+				loader.error(
+					'<div class="aph loader__content__error__title">Eita!</div>' +
+					'Alguma coisa deu errado tentando fazer seu login, saca só:<br />' +
+					error.message
+				);
 			});
 	};
 
@@ -31,7 +55,12 @@ angular.module('rastros')
 				loader.stop(loadMsg);
 			}, function(error) {
 				loader.stop(loadMsg);
-				loader.error(error.message);
+				loader.error(
+					'<div class="aph loader__content__error__title">Óh azidéia...</div>' +
+					'Parece que não é pra você sair daqui, hein?!<br />Hehehe<br />' +
+					'Se liga no erro que deu, tentando fazer logout:<br />' +
+					error.message
+				);
 			});
 	};
 
@@ -50,31 +79,27 @@ angular.module('rastros')
 	factory.provider = function (provider, title) {
 		var loadMsg  = 'Autenticando com ' + title;
 
-		provider.addScope('email');
-
 		loader.start(loadMsg);
 
 		auth.signInWithPopup(provider)
-			.then(function (result) {
-				user.data = result.user;
-
-				$rootScope.$broadcast('user:changed', user.data);
-
+			.then(function () {
 				loader.stop(loadMsg);
-			}).catch(function (error) {
-				var code       = error.code;
-				var message    = error.message;
-				var email      = error.email; 		// The email of the user's account used.
-				var credential = error.credential; 	// The firebase.auth.AuthCredential type that was used.
+			})
+			.catch(function (error) {
+				console.error(error);
 
-				$rootScope.$broadcast('user:changed', null);
-
-				loader.stop(loadMsg);
-				loader.error(''+ code + ': ' + message + '<br />(' + email + ')');
+				loader.error(
+					'<div class="aph loader__content__error__title">Ish...</div>' +
+					'Não deu bom tentando fazer o login com o ' +
+					title +
+					'<br />Tenta de novo aí, vai que funfa...'
+				);
 			});
 	};
 
 	auth.onAuthStateChanged(function (_user) {
+		$document.find('body')[0].click();
+
 		if (_user) {
 			user.data = _user;
 			$rootScope.$broadcast('user:changed', user.data);

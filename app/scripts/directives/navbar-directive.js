@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('rastros')
-.directive('navbar', function ($window, flow, user, $mdSidenav) {
+.directive('navbar', function ($window, flow, user, authentication) {
 	return {
 		restrict   : 'E',
 		scope      : true,
 		templateUrl: 'app/templates/directives/navbar-directive-template.html',
-		link       : function (scope) {
+		link       : function (scope, element) {
+			element.addClass('aph navbar navbar--fixed-top');
+
 			scope.goTo = function (page) {
 				var _page = page || '/';
 				flow.goTo(_page);
@@ -19,8 +21,8 @@ angular.module('rastros')
 				$scope.user = data;
 			});
 
-			$scope.toggleSidenav = function () {
-				$mdSidenav('right').toggle();
+			$scope.logout = function () {
+				authentication.logout();
 			};
 		},
 	};

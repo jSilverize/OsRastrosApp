@@ -4,7 +4,7 @@ const gulp  = require('gulp'),
       paths = require('./paths'),
       browserSync = require('browser-sync').create(),
       SRC   = './app',
-      protocol = false;
+      protocol = true;
 
 
 /**
@@ -14,7 +14,7 @@ gulp.task('serve', () => {
     browserSync.init({
         port: 9000,
         https: protocol,
-        notify: false,
+        notify: true,
         injectChanges: true,
         minify: false,
         open: false,
@@ -41,7 +41,7 @@ gulp.task('serve:dist', () => {
         https: protocol,
         notify: false,
         injectChanges: true,
-        minify: false,
+        minify: true,
         open: false,
         server: {
             baseDir: paths.dist

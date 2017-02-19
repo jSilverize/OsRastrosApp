@@ -13,10 +13,12 @@
     "angular-animate": "^1.5.8",
     "angular-scroll": "^1.0.0",
     "angular-hotkeys": "^0.2.2",
-    "animate.css": "^3.5.2",
-    "reset-css": "^2.0.2011012603",
     "moment": "^2.15.1",
-    "angular-material": "^1.1.1"
+    "reset-css": "^2.0.2011012603",
+    "animate.css": "^3.5.2",
+    "flexboxgrid": "^6.3.2",
+    "firebase": "^3.6.9",
+    "aphrodite": "https://github.com/ingresse/aphrodite.git#^1.0.0"
   },
   "ignore": [
     "**/.*",
@@ -25,5 +27,9 @@
     "test",
     "tests"
   ],
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "angular-ui-utils": "~0.*",
+    "angular": "1.5.8"
+  }
 }

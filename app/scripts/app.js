@@ -2,17 +2,12 @@
 
 angular.module('rastros', [
     'ngRoute',
-    'ngMaterial',
     'duScroll',
+    'aphrodite'
 ]);
 
 angular.module('rastros')
-.config(function ($routeProvider, $mdThemingProvider, momentProvider) {
-
-    $mdThemingProvider.theme('default')
-        .primaryPalette('red')
-        .accentPalette('green')
-    ;
+.config(function ($routeProvider, momentProvider) {
 
     momentProvider.locale('pt-br');
 

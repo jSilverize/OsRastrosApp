@@ -36,33 +36,33 @@
         <meta name="msapplication-TileColor" content="#eeeeee" />
 
         <!-- build:css assets/vendor.css -->
-        <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
+        <link rel="stylesheet" href="/bower_components/reset-css/reset.css" />
+        <link rel="stylesheet" href="/bower_components/aphrodite/dist/assets/aphrodite.css" />
         <!-- endbuild -->
-
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
         <!-- Styles -->
         <link rel="stylesheet" href="./assets/site.css">
     </head>
 
-    <body data-layout="column">
+    <body>
 
-        <loader></loader>
+        <loader>
+        </loader>
 
-        <main flex>
+        <main>
 
-            <navbar data-flex></navbar>
+            <navbar>
+            </navbar>
 
-            <side-nav></side-nav>
+            <content data-ng-view>
+            </content>
 
-            <md-content data-flex data-layout-padding data-ng-view>
-            </md-content>
-
-            <footer></footer>
+            <footer>
+            </footer>
 
         </main>
 
-        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script src="/bower_components/firebase/firebase.js"></script>
         <script>
             // Initialize Firebase
             var config = {
@@ -81,9 +81,9 @@
         <script src="/bower_components/angular-route/angular-route.js"></script>
         <script src="/bower_components/angular-aria/angular-aria.js"></script>
         <script src="/bower_components/angular-animate/angular-animate.js"></script>
-        <script src="/bower_components/angular-material/angular-material.js"></script>
         <script src="/bower_components/angular-scroll/angular-scroll.js"></script>
         <script src="/bower_components/angular-ui-mask/dist/mask.js"></script>
+        <script src="/bower_components/aphrodite/dist/scripts/aphrodite.js"></script>
         <script src="/bower_components/moment/moment.js"></script>
         <!-- endbuild -->
 
@@ -95,33 +95,34 @@
 
         <script src="/bower_components/moment/locale/pt-br.js"></script>
 
+        <script src="/scripts/constants/config-constant.js"></script>
         <script src="/scripts/constants/urls-constant.js"></script>
 
         <script src="/scripts/services/route-change-service.js"></script>
         <script src="/scripts/services/flow-service.js"></script>
-        <script src="/scripts/services/loader-service.js"></script>
         <script src="/scripts/services/scroll-service.js"></script>
         <script src="/scripts/services/moment-service.js"></script>
+        <script src="/scripts/services/inject-service.js"></script>
+        <script src="/scripts/services/facebook-service.js"></script>
         <script src="/scripts/services/futliga-service.js"></script>
         <script src="/scripts/services/firebase-service.js"></script>
         <script src="/scripts/services/user-service.js"></script>
         <script src="/scripts/services/auth-service.js"></script>
-        <!-- <script src="/scripts/services/progressive-web-app-service.js"></script> -->
 
         <script src="/scripts/controllers/404-controller.js"></script>
         <script src="/scripts/controllers/home-controller.js"></script>
         <script src="/scripts/controllers/auth-controller.js"></script>
         <script src="/scripts/controllers/profile-controller.js"></script>
 
-        <script src="/scripts/directives/loader-directive.js"></script>
         <script src="/scripts/directives/navbar-directive.js"></script>
-        <script src="/scripts/directives/side-nav-directive.js"></script>
+        <script src="/scripts/directives/img-error-directive.js"></script>
 
         <script src="/scripts/filters/unsafe-filter.js"></script>
         <script src="/scripts/filters/remove-break-lines-filter.js"></script>
         <script src="/scripts/filters/string-remove-after-filter.js"></script>
         <script src="/scripts/filters/futliga-matches-filter.js"></script>
-        <script src="/scripts/filters/week-day-filter.js"></script>
+        <script src="/scripts/filters/detect-date-filter.js"></script>
+        <script src="/scripts/filters/detect-team-filter.js"></script>
         <!-- endbuild -->
     </body>
 </html>

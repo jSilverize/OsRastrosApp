@@ -1,0 +1,39 @@
+$this: ".aph.navbar";
+
+#{$this} {
+	display: block;
+	color  : $color-green;
+
+	&__nav {
+		#{$this} {
+			&__brand {
+				&__logo {
+					background-image: url('/assets/images/icons/icon-60x60.png');
+				}
+
+				&__title {
+					color: $color-black;
+				}
+			}
+
+			&__menu {
+				&__drawer {
+					background-image: url('/assets/images/icons/icon--hamburger-menu--black.svg');
+				}
+
+				&__user {
+					max-width: 260px;
+				}
+
+				&.list {
+					.list__item {
+						&.active,
+						&:hover {
+							color: $color-red;
+						}
+					}
+				}
+			}
+		}
+	}
+}

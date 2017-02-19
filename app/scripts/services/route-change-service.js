@@ -13,17 +13,17 @@ angular.module('rastros')
     factory.start = function (event, next) {
         loader.start(loaderMsg);
 
-        // var isUserLogged = user.isLogged();
+        var isUserLogged = user.isLogged();
 
-        // // route need auth user send to login
-        // if (next.$$route.authenticated && !isUserLogged) {
-        //     flow.goTo('/login', $location.path());
-        // }
+        // route need auth user send to login
+        if (next.$$route.authenticated && !isUserLogged) {
+            flow.goTo('/login', $location.path());
+        }
 
-        // // route is an auth page and user is logged, send to profile
-        // if (next.$$route.authPage && isUserLogged) {
-        //     flow.goTo('/perfil', $location.path());
-        // }
+        // route is an auth page and user is logged, send to profile
+        if (next.$$route.authPage && isUserLogged) {
+            flow.goTo('/perfil', $location.path());
+        }
     };
 
     /**

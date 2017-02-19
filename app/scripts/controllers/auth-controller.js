@@ -1,8 +1,17 @@
 'use strict';
 
 angular.module('rastros')
-.controller('AuthController', function ($scope, authentication, user, fireb, flow) {
+.controller('AuthController', function ($rootScope, $scope, $window, $document,
+	authentication, user, facebook, loader, flow) {
 	$scope.form = {};
+
+	$scope.facebook = function () {
+		authentication.facebook();
+	};
+
+	$scope.twitter = function () {
+		authentication.twitter();
+	};
 
 	$scope.login = function () {
 		var form = $scope.form;
@@ -14,8 +23,14 @@ angular.module('rastros')
 		authentication.login(form.email, form.password);
 	};
 
-	$scope.facebook = function () {
-		authentication.facebook();
+	$scope.register = function () {
+		var form = $scope.registerForm;
+
+		if (!form.email || !form.password) {
+			return;
+		}
+
+		authentication.register(form.email, form.password);
 	};
 
 	$scope.$on('user:changed', function (event, data) {

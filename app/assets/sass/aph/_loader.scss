@@ -1,0 +1,19 @@
+$this: ".aph.loader";
+
+#{$this} {
+	&__content {
+		&__spinner {
+			&__image {
+				border-radius: 0;
+			}
+		}
+
+		&__message {
+			color: $color-red;
+
+			&.ng-leave {
+				color: $color-yellow;
+			}
+		}
+	}
+}
