@@ -15,6 +15,8 @@
 			<div class="col-xs-12 col-sm-6 col-md-4"
 				 data-ng-repeat="match in nextMatches">
 
+				<div data-ng-init="goingCount(match)"></div>
+
 				<div class="match">
 
 					<div class="match__date">
@@ -49,6 +51,56 @@
 							{{ match.teams.visitor.title }}
 						</div>
 
+					</div>
+
+					<div class="match__footer">
+
+						<div class="match__going">
+							<div class="match__going__text">
+								<ng-pluralize
+									count="match.goingNumber"
+									when="{
+										'0'    : 'Ninguém confirmou que vai, ainda',
+										'one'  : '1 pessoa falou que vai, hein?!',
+	                     				'other': '{} pessoas confirmaram presença'
+	                     			}">
+								</ng-pluralize>
+							</div>
+							<div class="match__going__users">
+								<img class="match__going__users__avatar"
+									 data-ng-repeat="(confirmDate, user) in match.goingProfiles"
+									 title="{{ user }}"
+									 alt="{{ user }}"
+									 data-ng-src="https://placehold.it/32x32"
+									 width="30"
+									 height="30" />
+
+								<img class="match__going__users__avatar"
+									 data-ng-if="!match.goingProfiles"
+									 title="Será que você vai memo?"
+									 alt="Vem!"
+									 data-ng-src="https://placehold.it/32x32"
+									 width="30"
+									 height="30" />
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-6">
+								<a class="aph btn btn--small btn--block btn--link btn--yellow"
+								   target="_blank"
+								   title="Ver no site da Futliga"
+								   href="{{ detailsUrl + match.date.id + '/' + match.id }}">
+									Local
+								</a>
+							</div>
+							<div class="col-xs-6">
+								<button class="aph btn btn--small btn--block btn--link btn--green"
+								   		data-ng-click="imGoing(match);">
+									Vou colar!
+								</button>
+							</div>
+						</div>
 					</div>
 
 				</div>

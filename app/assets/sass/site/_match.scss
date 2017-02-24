@@ -1,7 +1,7 @@
 $this: ".match";
 #{$this} {
     position: relative;
-    padding : 15px 20px 20px;
+    padding : 14px 20px 20px;
     margin  : 20px 0 0;
 
     border       : 1px solid $color-light-grey;
@@ -12,10 +12,11 @@ $this: ".match";
 
         font-size  : 13px;
         font-weight: bold;
+        line-height: 20px;
 
         text-transform: uppercase;
 
-        margin: 0 0 10px;
+        margin: 0 0 15px;
     }
 
     &__teams {
@@ -65,34 +66,33 @@ $this: ".match";
         font-size: 36px;
     }
 
-    &__details {
-        margin : 8px 0;
+    &__footer {
+        margin: 24px 0 0;
 
         text-align: center;
+    }
 
-        &__item {
-            position: relative;
-            margin  : 0 0 10px;
-            padding : 0 0 0 30px;
+    &__going {
+        font-size  : 11px;
+        line-height: 20px;
 
-            font-size  : 14px;
-            line-height: 1.45;
-            text-align : left;
+        &__text {
+            margin: 0 0 4px;
+        }
 
-            &:last-of-type {
-                margin-bottom: 0;
-            }
+        &__users {
+            margin: 4px 0 5px;
+            height: 36px;
 
-            &__icon {
-                position: absolute;
-                left: 0;
-                top : 47%;
-                transform: translateY(-50%);
-                max-width: 20px;
+            overflow: hidden;
 
-                &.fa {
-                    font-size: 19px;
-                }
+            &__avatar {
+                width : 30px;
+                height: 30px;
+
+                border-radius: 50%;
+
+                margin: 0 3px;
             }
         }
     }

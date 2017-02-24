@@ -1,0 +1,120 @@
+ <header class="header">
+	<div class="aph container">
+		<h1 class="header__title aph support text-center">
+			Cadastrar
+		</h1>
+	</div>
+</header>
+<section class="section">
+	<div class="aph container">
+		<div class="row center-sm center-md center-lg">
+			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
+				<form class="aph form form--with-fields"
+					  name="registerForm"
+					  novalidate=""
+					  data-form-validation="registerForm"
+					  data-ng-submit="registerForm.$valid && login();">
+					<div class="aph form__field">
+						<button class="aph btn btn--block btn--facebook"
+								type="button"
+								data-ng-click="facebook()">
+							CADASTRAR COM FACEBOOK
+						</button>
+					</div>
+					<div class="aph form__field">
+						<button class="aph btn btn--block btn--twitter"
+								type="button"
+								data-ng-click="twitter()">
+							CADASTRAR COM TWITTER
+						</button>
+					</div>
+					<div class="aph form__field form__or text-center">
+						OU ENTÃO
+					</div>
+					<div class="aph form__field">
+						<label class="aph form__label"
+							   for="email">
+							E-mail*
+						</label>
+						<input class="aph form__control"
+							   type="email"
+							   name="email"
+							   id="email"
+							   data-ng-required="true"
+							   data-ng-model="form.email" />
+						<div class="aph form__helper form__helper--error"
+							 data-ng-show="registerForm['email'].$invalid && !registerForm['email'].$pristine">
+							Preencha com um e-mail válido
+						</div>
+					</div>
+					<div class="aph form__field">
+						<label class="aph form__label"
+							   for="emailCheck">
+							Confirmar Email*
+						</label>
+						<input class="aph form__control"
+							   type="email"
+							   name="emailCheck"
+							   id="emailCheck"
+							   data-ng-match="form.email"
+							   data-ng-required="true"
+							   data-ng-model="form.emailCheck" />
+						<div class="aph form__helper form__helper--error"
+							 data-ng-show="registerForm['emailCheck'].$invalid && !registerForm['emailCheck'].$pristine">
+							Repita o e-mail correspondente
+						</div>
+						<div class="aph form__helper form__helper--error"
+							 data-ng-show="registerForm['email'].$valid && form.email !== form.emailCheck && !registerForm['emailCheck'].$pristine && registerForm['emailCheck'].$valid">
+							Os e-mails não estão iguais
+						</div>
+					</div>
+					<div class="aph form__field">
+						<label class="aph form__label"
+							   for="password">
+							Senha*
+						</label>
+						<input class="aph form__control"
+							   type="password"
+							   name="password"
+							   id="password"
+							   data-ng-required="true"
+							   data-ng-model="form.password" />
+						<div class="aph form__helper form__helper--error"
+							 data-ng-show="registerForm['password'].$invalid && !registerForm['password'].$pristine">
+							Insira uma senha
+						</div>
+					</div>
+					<div class="aph form__field">
+						<label class="aph form__label"
+							   for="passwordCheck">
+							Confirmar Senha*
+						</label>
+						<input class="aph form__control"
+							   type="password"
+							   name="passwordCheck"
+							   id="passwordCheck"
+							   data-ng-match="form.password"
+							   data-ng-required="true"
+							   data-ng-model="form.passwordCheck" />
+						<div class="aph form__helper form__helper--error"
+							 data-ng-show="registerForm['passwordCheck'].$invalid && !registerForm['passwordCheck'].$pristine">
+							Repita a senha correspondente
+						</div>
+						<div class="aph form__helper form__helper--error"
+							 data-ng-show="registerForm['password'].$valid && form.password !== form.passwordCheck && !registerForm['passwordCheck'].$pristine && registerForm['passwordCheck'].$valid">
+							A senha não está igual
+						</div>
+					</div>
+					<div class="aph form__field">
+						<br />
+						<button class="aph btn btn--block btn--green"
+								type="submit"
+								data-ng-disabled="!form.email || !form.password || !form.passwordCheck || form.password !== form.passwordCheck || registerForm.$submitted">
+							CADASTRAR
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

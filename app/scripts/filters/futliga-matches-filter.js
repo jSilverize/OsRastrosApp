@@ -19,6 +19,10 @@ angular.module('rastros')
                 var match = angular.copy(matchInit);
                 var date  = matches[i].querySelector('h5');
                 var teams = matches[i].querySelectorAll('.jogos-times-nome h4 a');
+                var path  = matches[i].querySelector('.veja-mais').pathname;
+
+                // Define ID
+                match.id   = path.replace('/Agenda/', '').slice(9);
 
                 // Define Date
                 match.date = $filter('detectDate')(date.innerText);
@@ -26,6 +30,10 @@ angular.module('rastros')
                 // Define Teams
                 match.teams.home    = $filter('detectTeam')(teams[0]);
                 match.teams.visitor = $filter('detectTeam')(teams[1]);
+
+                // People Going
+                match.goingNumber   = 0;
+                match.goingProfiles = null;
 
                 calendar.push(match);
             }

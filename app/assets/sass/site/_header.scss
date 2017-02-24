@@ -1,13 +1,23 @@
 $this: ".header";
 #{$this} {
 	display: block;
-	padding: 30px 0 40px;
-	margin : 60px 0 40px;
+	padding: 60px 0;
+	margin : 60px 0;
+
+	background-color   : $color-black;
+	background-repeat  : no-repeat;
+    background-position: center;
+    background-size    : cover;
+    background-image   : url("/assets/images/header--background.jpg");
 
 	&__title {
-		font-size  : 48px;
-		line-height: 1.25;
-		margin     : 10px 0;
-		color      : $color-grey;
+		&.aph {
+			margin: 0;
+			color : $color-white;
+
+			font-weight: bold;
+
+			text-shadow: 0 0 4px $color-black;
+		}
 	}
 }

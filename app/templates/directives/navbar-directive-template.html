@@ -14,8 +14,15 @@
 		<ul class="aph navbar__menu navbar__menu--right list">
 			<li class="aph list__item"
 				data-ng-if="!user">
+				<a class="aph list__item__link"
+				   data-ng-click="goTo('/cadastrar')">
+					Cadastrar
+				</a>
+			</li>
+			<li class="aph list__item"
+				data-ng-if="!user">
 				<a class="aph btn btn--green"
-				   data-ng-click="goTo('/login')">
+				   data-ng-click="goTo('/entrar')">
 					Entrar
 				</a>
 			</li>
@@ -76,17 +83,22 @@
 	</ul>
 
 	<ul class="aph list drawer__menu">
-		<li class="aph list__item"
+		<li class="aph list__item text-center text-black"
 			data-ng-if="user">
 			{{ user.displayName || user.email }}
 		</li>
 		<li class="aph list__item">
 			<a class="aph btn btn--green btn--block btn--small"
-			   data-ng-click="goTo('/login'); closeDrawer();"
+			   data-ng-click="goTo('/entrar'); closeDrawer();"
 			   data-ng-if="!user">
 				ENTRAR
 			</a>
-			<a class="aph btn btn--green btn--block"
+			<a class="aph btn btn--green btn--block btn--bordered btn--small"
+			   data-ng-click="goTo('/cadastrar'); closeDrawer();"
+			   data-ng-if="!user">
+				CADASTRAR
+			</a>
+			<a class="aph btn btn--green btn--small btn--bordered btn--block"
 			   data-ng-click="logout(); closeDrawer();"
 			   data-ng-if="user">
 				SAIR

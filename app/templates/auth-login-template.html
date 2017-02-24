@@ -1,16 +1,19 @@
-<header class="header">
+ <header class="header">
 	<div class="aph container">
-		<h1 class="header__title aph support">
+		<h1 class="header__title aph support text-center">
 			Entrar
 		</h1>
 	</div>
 </header>
 <section class="section">
 	<div class="aph container">
-		<div class="row">
+		<div class="row center-sm center-md center-lg">
 			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
 				<form class="aph form form--with-fields"
-					  data-ng-submit="login()">
+				      name="loginForm"
+				      novalidate=""
+				      data-form-validation="loginForm"
+					  data-ng-submit="loginForm.$valid && login();">
 					<div class="aph form__field">
 						<button class="aph btn btn--block btn--facebook"
 								type="button"
@@ -25,7 +28,7 @@
 							ENTRAR COM TWITTER
 						</button>
 					</div>
-					<div class="aph form__field text-center">
+					<div class="aph form__field form__or text-center">
 						OU ENTÃO
 					</div>
 					<div class="aph form__field">
@@ -37,7 +40,7 @@
 							   type="email"
 							   name="email"
 							   id="email"
-							   required
+							   data-ng-required="true"
 							   data-ng-model="form.email" />
 					</div>
 					<div class="aph form__field">
@@ -47,35 +50,20 @@
 						</label>
 						<input class="aph form__control"
 							   type="password"
+							   name="password"
 							   id="password"
-							   required
+							   data-ng-required="true"
 							   data-ng-model="form.password" />
 					</div>
 					<div class="aph form__field">
+						<br />
 						<button class="aph btn btn--block btn--green"
 								type="submit"
-								data-ng-disabled="!form.email || !form.password">
+								data-ng-disabled="!form.email || !form.password || loginForm.$submitted">
 							ENTRAR
 						</button>
 					</div>
 				</form>
-			</div>
-			<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1"></div>
-			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-				<div>
-					<h2 class="aph support">
-						Não tem cadastro?
-					</h2>
-					<p class="aph">
-						Sem problemas!
-					</p>
-					<p class="aph">
-						Basta "entrar", seja com
-						o seu facebook ou com e-mail e senha, que
-						o cadastro será efetuado na primeira
-						vez em que você acessar.
-					</p>
-				</div>
 			</div>
 		</div>
 	</div>

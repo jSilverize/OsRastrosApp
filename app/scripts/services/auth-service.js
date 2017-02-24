@@ -23,6 +23,8 @@ angular.module('rastros')
 					'Alguma coisa deu errado tentando fazer seu cadastro, saca só:<br />' +
 					error.message
 				);
+
+				$document.find('body')[0].click();
 			});
 	};
 
@@ -37,12 +39,16 @@ angular.module('rastros')
 				loader.stop(loadMsg);
 			})
 			.catch(function(error) {
+				console.log(error);
+
 				loader.stop(loadMsg);
 				loader.error(
-					'<div class="aph loader__content__error__title">Eita!</div>' +
+					'<div class="aph loader__content__error__title">Ih, carai!</div>' +
 					'Alguma coisa deu errado tentando fazer seu login, saca só:<br />' +
 					error.message
 				);
+
+				$document.find('body')[0].click();
 			});
 	};
 
@@ -61,6 +67,8 @@ angular.module('rastros')
 					'Se liga no erro que deu, tentando fazer logout:<br />' +
 					error.message
 				);
+
+				$document.find('body')[0].click();
 			});
 	};
 
@@ -94,6 +102,8 @@ angular.module('rastros')
 					title +
 					'<br />Tenta de novo aí, vai que funfa...'
 				);
+
+				$document.find('body')[0].click();
 			});
 	};
 

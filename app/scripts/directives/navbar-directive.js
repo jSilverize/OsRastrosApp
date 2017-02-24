@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rastros')
-.directive('navbar', function ($window, flow, user, authentication) {
+.directive('navbar', function ($rootScope, $window, flow, user, authentication) {
 	return {
 		restrict   : 'E',
 		scope      : true,
@@ -15,10 +15,10 @@ angular.module('rastros')
 			};
 		},
 		controller : function ($scope) {
-			$scope.user = user.data ? user.data : user.isLogged();
+			$rootScope.user = user.data ? user.data : user.isLogged();
 
 			$scope.$on('user:changed', function (event, data) {
-				$scope.user = data;
+				$rootScope.user = data;
 			});
 
 			$scope.logout = function () {

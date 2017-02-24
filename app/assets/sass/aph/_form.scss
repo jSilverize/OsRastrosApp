@@ -1,0 +1,30 @@
+$this: ".aph.form";
+
+#{$this} {
+	&--with-fields {
+		margin: -10px 0;
+	}
+
+	&__field {
+		margin: 10px 0;
+
+		&.form__or {
+			padding-top: 10px;
+		}
+	}
+
+	&__field,
+	&__label {
+		line-height: 20px;
+	}
+
+	&__label {
+		margin: 5px 0;
+	}
+
+	&__control {
+		&:focus {
+			border-color: $color-green !important;
+		}
+	}
+}

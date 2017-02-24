@@ -20,6 +20,7 @@ angular.module('rastros')
             minute: time.slice(3, 5),
         };
 
+        date.id     = date.year + date.month + date.day;
         date.moment =
             moment(
                 date.year +

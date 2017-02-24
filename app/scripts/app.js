@@ -21,8 +21,13 @@ angular.module('rastros')
             templateUrl: 'app/templates/404-template.html',
             controller : '404Controller',
         })
-        .when('/login', {
-            templateUrl: 'app/templates/auth-template.html',
+        .when('/entrar', {
+            templateUrl: 'app/templates/auth-login-template.html',
+            controller : 'AuthController',
+            authPage   : true,
+        })
+        .when('/cadastrar', {
+            templateUrl: 'app/templates/auth-register-template.html',
             controller : 'AuthController',
             authPage   : true,
         })
