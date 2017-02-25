@@ -60,7 +60,7 @@
 								<ng-pluralize
 									count="match.goingNumber"
 									when="{
-										'0'    : 'Ninguém confirmou que vai, ainda',
+										'0'    : 'Ninguém confirmou ainda. Bora?',
 										'one'  : '1 pessoa falou que vai, hein?!',
 	                     				'other': '{} pessoas confirmaram presença'
 	                     			}">
@@ -68,26 +68,24 @@
 							</div>
 							<div class="match__going__users">
 								<img class="match__going__users__avatar"
-									 data-ng-repeat="(confirmDate, user) in match.goingProfiles"
-									 title="{{ user }}"
-									 alt="{{ user }}"
-									 data-ng-src="https://placehold.it/32x32"
+									 data-ng-repeat="user in match.goingProfiles"
+									 title="{{ user.name }}"
+									 alt="{{ user.name }}"
+									 data-ng-src="{{ user.photoURL }}"
 									 width="30"
 									 height="30" />
 
-								<img class="match__going__users__avatar"
-									 data-ng-if="!match.goingProfiles"
-									 title="Será que você vai memo?"
-									 alt="Vem!"
-									 data-ng-src="https://placehold.it/32x32"
-									 width="30"
-									 height="30" />
+								<button class="match__going__users__avatar"
+									 data-ng-if="!match.goingProfiles || match.goingProfiles.length === 0"
+									 title="Confirmar presença?"
+									 data-ng-click="imGoing(match);">
+								</button>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-xs-6">
-								<a class="aph btn btn--small btn--block btn--link btn--yellow"
+								<a class="aph btn btn--small btn--block btn--link btn--black"
 								   target="_blank"
 								   title="Ver no site da Futliga"
 								   href="{{ detailsUrl + match.date.id + '/' + match.id }}">

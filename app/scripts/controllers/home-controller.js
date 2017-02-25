@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('rastros')
-.controller('HomeController', function ($scope, loader, flow, urls, futliga) {
+.controller('HomeController', function ($rootScope, $scope,
+	loader, flow, urls, futliga) {
 
 	$scope.nextMatches = null;
 	$scope.count       = {};
@@ -18,7 +19,10 @@ angular.module('rastros')
 			})
 			.catch(function (error) {
 				loader.error(
-					'Houve um problema com "' + loadMsg + '":<br />' + error.name
+					'Houve um problema com "' +
+					loadMsg +
+					'":<br />' +
+					error.name
 				);
 			})
 			.finally(function () {
@@ -34,19 +38,47 @@ angular.module('rastros')
 				if (number) {
 					var profiles = snapshot.val();
 
-					console.log(number);
-					console.log(profiles);
-
 					match.goingNumber   = number;
-					match.goingProfiles = profiles;
+					match.goingProfiles = [];
 
-					$scope.$digest();
+					angular.forEach(profiles, function (value, key) {
+						firebase.database().ref('users/' + key)
+				    		.once('value').then(function (userSnapshot) {
+				    			var user = userSnapshot.val();
+
+				    			if (!user) {
+				    				return;
+				    			}
+
+				    			var profile = {
+				    				name    : user.name,
+				    				photoURL: user.photoURL,
+				    			};
+
+				    			match.goingProfiles.push(profile);
+
+				    			$scope.$apply();
+				    		});
+					});
 				}
 			});
 	};
 
 	$scope.imGoing = function (match) {
-		console.log(match);
+		var user = $rootScope.user;
+
+		if (!user) {
+			flow.goTo('/entrar');
+
+			return;
+		}
+
+		var path = 'going/' + match.date.id + '/' + user.uid;
+
+		firebase.database().ref(path).set({
+			confirmStamp: moment().format('YYYY-MM-DD[T]HH:mm:ss')
+		});
+
 	};
 
     $scope.otherPage = function () {

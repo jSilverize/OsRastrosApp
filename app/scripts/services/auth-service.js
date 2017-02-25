@@ -39,8 +39,6 @@ angular.module('rastros')
 				loader.stop(loadMsg);
 			})
 			.catch(function(error) {
-				console.log(error);
-
 				loader.stop(loadMsg);
 				loader.error(
 					'<div class="aph loader__content__error__title">Ih, carai!</div>' +
@@ -107,12 +105,31 @@ angular.module('rastros')
 			});
 	};
 
+	function writeUserData (user) {
+		if (fireb.getById(user.uid)) {
+			// TODO
+			return;
+		}
+
+		var newUser = {
+			name         : user.displayName,
+			email        : user.email,
+			emailVerified: user.emailVerified,
+			photoURL     : user.photoURL,
+			permission   : 'default'
+		};
+
+		fireb.create(user.uid, newUser);
+	}
+
 	auth.onAuthStateChanged(function (_user) {
 		$document.find('body')[0].click();
 
 		if (_user) {
 			user.data = _user;
 			$rootScope.$broadcast('user:changed', user.data);
+
+			writeUserData(_user);
 			return;
 		}
 

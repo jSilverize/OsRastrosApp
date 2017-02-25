@@ -87,12 +87,29 @@ $this: ".match";
             overflow: hidden;
 
             &__avatar {
-                width : 30px;
-                height: 30px;
+                display: inline-block;
+                width  : 30px;
+                height : 30px;
 
+                outline      : 0;
+                border       : 0;
                 border-radius: 50%;
 
                 margin: 0 3px;
+
+                background-color   : $color-smoke;
+                background-repeat  : no-repeat;
+                background-position: center;
+                background-size    : 28px;
+                background-image   : url("/assets/images/icons/icon--check--yellow.svg");
+
+                cursor: pointer;
+
+                transition: .2s background-image linear;
+
+                &:hover {
+                    background-image: url("/assets/images/icons/icon--check--green.svg");
+                }
             }
         }
     }

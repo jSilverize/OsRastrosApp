@@ -9,7 +9,7 @@
         <link rel="canonical" href="https://rastros-app.firebaseapp.com/" />
 
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <link rel="icon"                             href="./assets/images/icons/icon-32x32.png" />
@@ -35,33 +35,32 @@
         <meta name="msapplication-TileImage" content="./assets/images/icons/icon-144x144.png" />
         <meta name="msapplication-TileColor" content="#eeeeee" />
 
-        <link rel="stylesheet" href="assets/vendor.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito" />
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="./assets/site.css">
+        <link rel="stylesheet" href="assets/app.css"/>
     </head>
 
     <body>
 
-        <loader></loader>
+        <loader>
+        </loader>
 
-        <content>
+        <main>
 
-            <navbar></navbar>
+            <navbar>
+            </navbar>
 
-            <main data-ng-view></main>
+            <content data-ng-view>
+            </content>
 
-            <side-nav></side-nav>
+            <footer>
+            </footer>
 
-            <footer></footer>
+        </main>
 
-        </content>
-
-        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
-        <script>
-            // Initialize Firebase
+        <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+        <script type="text/javascript">
             var config = {
                 apiKey           : 'AIzaSyDwydxB0ed_UU68yn6lUNUmFyMD19HcTSg',
                 authDomain       : 'rastros-app.firebaseapp.com',
@@ -70,6 +69,7 @@
                 messagingSenderId: '118411076216'
             };
 
+            // Initialize Firebase
             firebase.initializeApp(config);
         </script>
 

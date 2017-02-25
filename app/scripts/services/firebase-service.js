@@ -1,27 +1,16 @@
 'use strict';
 
 angular.module('rastros')
-.factory('fireb', function ($q, loader) {
+.factory('fireb', function () {
 	var database = firebase.database();
 	var factory  = {};
 
-	factory.create = function (user) {
-		if (!user) {
+	factory.create = function (uid, user) {
+		if (!uid || !user) {
 			return;
 		}
-		var loadMsg = 'Cadastrando';
 
-		loader.start(loadMsg);
-
-        var newUserKey = database.ref().child('users').push().key;
-
-        database.ref('users/' + newUserKey).set(user)
-			.then(function () {
-	    		loader.stop(loadMsg);
-	    	})
-	    	.catch(function (error) {
-	    		loader.error(error);
-	    	});
+        database.ref('users/' + uid).set(user);
 	};
 
 	factory.getById = function (userId) {
@@ -29,17 +18,10 @@ angular.module('rastros')
 			return;
 		}
 
-		var deferred = $q.defer();
-
-		database.ref('/users/' + userId).once('value')
-			.then(function (snapshot) {
-				deferred.resolve(snapshot.val());
-			})
-			.catch(function (error) {
-				deferred.reject(error);
+		database.ref('/users/' + userId)
+			.on('value', function (snapshot) {
+				return snapshot.val();
 			});
-
-		return deferred.promise;
 	};
 
 	return factory;

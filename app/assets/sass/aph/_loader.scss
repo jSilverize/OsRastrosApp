@@ -5,6 +5,9 @@ $this: ".aph.loader";
 		&__spinner {
 			&__image {
 				border-radius: 0;
+
+				background-size : 58px;
+				background-image: url("/assets/images/loader--spinner--balls.gif");
 			}
 		}
 

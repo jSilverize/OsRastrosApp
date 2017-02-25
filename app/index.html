@@ -35,13 +35,13 @@
         <meta name="msapplication-TileImage" content="./assets/images/icons/icon-144x144.png" />
         <meta name="msapplication-TileColor" content="#eeeeee" />
 
-        <!-- build:css assets/vendor.css -->
-        <link rel="stylesheet" href="/bower_components/reset-css/reset.css" />
-        <link rel="stylesheet" href="/bower_components/aphrodite/dist/assets/aphrodite.css" />
-        <!-- endbuild -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito" />
 
-        <!-- Styles -->
+        <!-- build:css assets/app.css -->
+        <link rel="stylesheet" href="/bower_components/aphrodite/dist/assets/aphrodite.css" />
         <link rel="stylesheet" href="./assets/site.css">
+        <!-- endbuild -->
     </head>
 
     <body>
@@ -62,9 +62,8 @@
 
         </main>
 
-        <script src="/bower_components/firebase/firebase.js"></script>
-        <script>
-            // Initialize Firebase
+        <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+        <script type="text/javascript">
             var config = {
                 apiKey           : 'AIzaSyDwydxB0ed_UU68yn6lUNUmFyMD19HcTSg',
                 authDomain       : 'rastros-app.firebaseapp.com',
@@ -73,27 +72,23 @@
                 messagingSenderId: '118411076216'
             };
 
+            // Initialize Firebase
             firebase.initializeApp(config);
         </script>
 
         <!-- build:js scripts/vendor.js -->
-        <script src="/bower_components/angular/angular.js"></script>
-        <script src="/bower_components/angular-route/angular-route.js"></script>
-        <script src="/bower_components/angular-aria/angular-aria.js"></script>
-        <script src="/bower_components/angular-animate/angular-animate.js"></script>
-        <script src="/bower_components/angular-scroll/angular-scroll.js"></script>
-        <script src="/bower_components/angular-ui-mask/dist/mask.js"></script>
+        <script src="/bower_components/aphrodite/dist/scripts/aphrodite-vendors.js"></script>
         <script src="/bower_components/aphrodite/dist/scripts/aphrodite.js"></script>
+        <script src="/bower_components/angular-route/angular-route.js"></script>
+        <script src="/bower_components/angular-ui-mask/dist/mask.js"></script>
         <script src="/bower_components/moment/moment.js"></script>
+        <script src="/bower_components/moment/locale/pt-br.js"></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/scripts.js -->
         <script src="/scripts/app.js"></script>
         <script src="/scripts/run.js"></script>
         <script src="/scripts/views.js"></script>
-        <!-- <script src="/scripts/progressive-web-app.js"></script> -->
-
-        <script src="/bower_components/moment/locale/pt-br.js"></script>
 
         <script src="/scripts/constants/config-constant.js"></script>
         <script src="/scripts/constants/urls-constant.js"></script>

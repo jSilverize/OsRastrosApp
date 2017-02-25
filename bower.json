@@ -6,20 +6,7 @@
   ],
   "license": "ISC",
   "private": true,
-  "dependencies": {
-    "angular": "^1.5.8",
-    "angular-route": "^1.5.8",
-    "angular-ui-utils": "^3.0.0",
-    "angular-animate": "^1.5.8",
-    "angular-scroll": "^1.0.0",
-    "angular-hotkeys": "^0.2.2",
-    "moment": "^2.15.1",
-    "reset-css": "^2.0.2011012603",
-    "animate.css": "^3.5.2",
-    "flexboxgrid": "^6.3.2",
-    "firebase": "^3.6.9",
-    "aphrodite": "https://github.com/ingresse/aphrodite.git#^1.0.0"
-  },
+  "dependencies": {},
   "ignore": [
     "**/.*",
     "node_modules",
@@ -27,9 +14,10 @@
     "test",
     "tests"
   ],
-  "devDependencies": {},
-  "resolutions": {
-    "angular-ui-utils": "~0.*",
-    "angular": "1.5.8"
+  "devDependencies": {
+    "moment": "^2.15.1",
+    "aphrodite": "https://github.com/ingresse/aphrodite.git#^1.1.0",
+    "angular-route": "^1.6.2",
+    "angular-ui-mask": "^1.8.7"
   }
 }
