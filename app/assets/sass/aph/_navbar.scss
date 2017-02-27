@@ -23,13 +23,26 @@ $this: ".aph.navbar";
 
 				&__user {
 					max-width: 260px;
+
+					&__avatar {
+						border-radius: 6px;
+
+						float: right;
+
+						margin-right: 25px;
+						margin-left : -15px;
+					}
 				}
 
 				&.list {
 					.list__item {
 						&.active,
 						&:hover {
-							color: $color-red;
+							color: $color-black;
+
+							.list__item__link {
+								color: $color-black;
+							}
 						}
 					}
 				}

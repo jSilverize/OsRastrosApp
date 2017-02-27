@@ -43,6 +43,12 @@
 				<ul class="aph dropdown__content">
 					<li class="aph dropdown__content__item">
 						<a class="aph dropdown__content__item__link"
+						   data-ng-click="goTo('/perfil');">
+							Meu Perfil
+						</a>
+					</li>
+					<li class="aph dropdown__content__item">
+						<a class="aph dropdown__content__item__link"
 						   data-ng-click="logout();">
 							Sair
 						</a>
@@ -83,9 +89,18 @@
 	</ul>
 
 	<ul class="aph list drawer__menu">
-		<li class="aph list__item text-center text-black"
+		<li class="aph list__item text-black"
 			data-ng-if="user">
-			{{ user.displayName || user.email }}
+			<a class="aph list__item__link drawer__menu__user"
+			   data-ng-click="goTo('/perfil'); closeDrawer();">
+				<img class="aph drawer__menu__user__avatar"
+			 		 height="32"
+			 		 width="32"
+			 		 alt="{{ user.displayName || user.email }}"
+				 	 data-ng-if="user.photoURL"
+				 	 data-ng-src="{{ user.photoURL }}" />
+				{{ user.displayName || user.email }}
+			</a>
 		</li>
 		<li class="aph list__item">
 			<a class="aph btn btn--green btn--block btn--small"

@@ -3,4 +3,19 @@ $this: ".aph.drawer";
 #{$this} {
 	width: 260px;
 	left : -260px;
+
+	&__menu {
+		&__user {
+			overflow     : hidden;
+			white-space  : nowrap;
+			text-overflow: ellipsis;
+
+			&__avatar {
+				float : left;
+				margin: -6px 6px 0 0;
+
+				border-radius: 50%;
+			}
+		}
+	}
 }

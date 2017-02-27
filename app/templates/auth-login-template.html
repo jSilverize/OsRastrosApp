@@ -7,28 +7,28 @@
 </header>
 <section class="section">
 	<div class="aph container">
-		<div class="row center-sm center-md center-lg">
-			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
+		<div class="row center-xs center-sm center-md center-lg">
+			<div class="col-xs-10 col-sm-5 col-md-4 col-lg-3">
 				<form class="aph form form--with-fields"
 				      name="loginForm"
 				      novalidate=""
 				      data-form-validation="loginForm"
 					  data-ng-submit="loginForm.$valid && login();">
-					<div class="aph form__field">
+					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--facebook"
 								type="button"
 								data-ng-click="facebook()">
 							ENTRAR COM FACEBOOK
 						</button>
 					</div>
-					<div class="aph form__field">
+					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--twitter"
 								type="button"
 								data-ng-click="twitter()">
 							ENTRAR COM TWITTER
 						</button>
 					</div>
-					<div class="aph form__field form__or text-center">
+					<div class="aph form__field form__field--large form__or text-center">
 						OU ENTÃO
 					</div>
 					<div class="aph form__field">
@@ -55,11 +55,10 @@
 							   data-ng-required="true"
 							   data-ng-model="form.password" />
 					</div>
-					<div class="aph form__field">
-						<br />
+					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--green"
 								type="submit"
-								data-ng-disabled="!form.email || !form.password || loginForm.$submitted">
+								data-ng-disabled="!form.email || !form.password">
 							ENTRAR
 						</button>
 					</div>

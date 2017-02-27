@@ -2,7 +2,7 @@
 
 angular.module('rastros')
 .controller('HomeController', function ($rootScope, $scope,
-	loader, flow, urls, futliga) {
+	loader, flow, urls, futliga, fireb) {
 
 	$scope.nextMatches = null;
 	$scope.count       = {};
@@ -16,6 +16,8 @@ angular.module('rastros')
 		futliga.nextMatches()
 			.then(function (response) {
 				$scope.nextMatches = response;
+
+				$scope.saveGames($scope.nextMatches);
 			})
 			.catch(function (error) {
 				loader.error(
@@ -30,37 +32,46 @@ angular.module('rastros')
 			});
 	};
 
+	$scope.updateCounts = function (match, snapshot) {
+		var number    = snapshot.numChildren();
+		var profiles  = snapshot.val();
+
+		match.imGoing       = false;
+		match.goingNumber   = number || 0;
+		match.goingProfiles = [];
+
+		angular.forEach(profiles, function (value, key) {
+			firebase.database().ref('profiles/' + key)
+	    		.once('value').then(function (userSnapshot) {
+	    			var people = userSnapshot.val();
+
+	    			if (people) {
+	    				var profile = {
+		    				uid     : people.uid,
+		    				name    : people.name,
+		    				photoURL: people.photoURL ? people.photoURL : '/assets/images/icons/icon-60x60.png',
+		    			};
+
+		    			match.goingProfiles.push(profile);
+	    			}
+
+	    			$scope.$apply();
+	    		});
+
+	    	if ($rootScope.user) {
+	    		if (key === $rootScope.user.uid) {
+	    			match.imGoing = true;
+	    		}
+	    	}
+		});
+	};
+
 	$scope.goingCount = function (match) {
-		firebase.database().ref('going/' + match.date.id)
+		var path = 'games/' + match.date.id + '-' + match.id + '/going';
+
+		firebase.database().ref(path)
 			.on('value', function (snapshot) {
-				var number = snapshot.numChildren();
-
-				if (number) {
-					var profiles = snapshot.val();
-
-					match.goingNumber   = number;
-					match.goingProfiles = [];
-
-					angular.forEach(profiles, function (value, key) {
-						firebase.database().ref('users/' + key)
-				    		.once('value').then(function (userSnapshot) {
-				    			var user = userSnapshot.val();
-
-				    			if (!user) {
-				    				return;
-				    			}
-
-				    			var profile = {
-				    				name    : user.name,
-				    				photoURL: user.photoURL,
-				    			};
-
-				    			match.goingProfiles.push(profile);
-
-				    			$scope.$apply();
-				    		});
-					});
-				}
+				$scope.updateCounts(match, snapshot);
 			});
 	};
 
@@ -73,12 +84,48 @@ angular.module('rastros')
 			return;
 		}
 
-		var path = 'going/' + match.date.id + '/' + user.uid;
+		var path = 'games/' + match.date.id + '-' + match.id + '/going/' + user.uid;
 
 		firebase.database().ref(path).set({
 			confirmStamp: moment().format('YYYY-MM-DD[T]HH:mm:ss')
 		});
+	};
 
+	$scope.imNotGoing = function (match) {
+		var user = $rootScope.user;
+
+		if (!user) {
+			flow.goTo('/entrar');
+
+			return;
+		}
+
+		var path = 'games/' + match.date.id + '-' + match.id + '/going';
+
+		firebase.database().ref(path).child(user.uid).remove();
+	};
+
+	$scope.saveGames = function (games) {
+		if (!games || !$rootScope.user) {
+			return;
+		}
+
+		for (var i = 0; i < games.length; i++) {
+			var path = 'games/' + games[i].date.id + '-' + games[i].id;
+
+			$scope.verifyMatch(path, games[i]);
+		}
+	};
+
+	$scope.verifyMatch = function (path, match) {
+		firebase.database().ref(path)
+    		.once('value').then(function (gameSnapshot) {
+    			if (gameSnapshot.val()) {
+    				return;
+    			}
+
+    			fireb.createMatch(match);
+    		});
 	};
 
     $scope.otherPage = function () {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rastros')
-.factory('fireb', function () {
+.factory('fireb', function ($q) {
 	var database = firebase.database();
 	var factory  = {};
 
@@ -10,7 +10,28 @@ angular.module('rastros')
 			return;
 		}
 
-        database.ref('users/' + uid).set(user);
+        database.ref('profiles/' + uid).set(user);
+	};
+
+	factory.createMatch = function (match) {
+		if (!match) {
+			return;
+		}
+
+		var newMatch = {
+			date : match.date,
+			teams: match.teams
+		};
+
+		delete newMatch.date.moment;
+
+		var path =
+			'games/' +
+			match.date.id +
+			'-' +
+			match.id;
+
+        database.ref(path).set(newMatch);
 	};
 
 	factory.getById = function (userId) {
@@ -18,10 +39,14 @@ angular.module('rastros')
 			return;
 		}
 
-		database.ref('/users/' + userId)
+		var deferred = $q.defer();
+
+		database.ref('profiles/' + userId)
 			.on('value', function (snapshot) {
-				return snapshot.val();
+				deferred.resolve(snapshot.val());
 			});
+
+		return deferred.promise;
 	};
 
 	return factory;

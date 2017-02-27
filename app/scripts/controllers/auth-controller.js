@@ -24,7 +24,7 @@ angular.module('rastros')
 	};
 
 	$scope.register = function () {
-		var form = $scope.registerForm;
+		var form = $scope.form;
 
 		if (!form.email || !form.password) {
 			return;

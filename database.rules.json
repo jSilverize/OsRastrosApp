@@ -1,14 +1,22 @@
 {
   "rules": {
-    "users": {
+    "games" : {
+      ".read": true,
+      ".write": "auth !== null"
+    },
+    "profiles": {
+      ".read": true,
       "$user_id": {
-    		".read": true,
+        ".read": true,
         ".write": "$user_id === auth.uid"
       }
     },
-    "going" : {
-    	".read": true,
-      ".write": "auth !== null"
+    "users": {
+      ".read": true,
+      "$user_id": {
+        ".read": true,
+        ".write": "$user_id === auth.uid"
+      }
     }
   }
 }

@@ -3,6 +3,12 @@ $this: ".aph.loader";
 #{$this} {
 	&__content {
 		&__spinner {
+			animation: fadeIn .5s;
+
+			&.ng-leave {
+				animation: fadeOut .5s;
+			}
+
 			&__image {
 				border-radius: 0;
 
@@ -12,10 +18,14 @@ $this: ".aph.loader";
 		}
 
 		&__message {
-			color: $color-red;
+			color: $color-black;
+
+			animation : fadeIn .5s;
 
 			&.ng-leave {
-				color: $color-yellow;
+				color: $color-grey;
+
+				animation: fadeOut .5s;
 			}
 		}
 	}

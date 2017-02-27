@@ -1,20 +1,80 @@
 $this: ".profile";
 
 #{$this} {
-	&.card {
-		&.horizontal {
-			.card-image {
-				line-height: 0;
+	margin-top: -35px;
 
-				img {
-					border-top-left-radius   : 3px;
-					border-bottom-left-radius: 3px;
-				}
+	&__avatar {
+		display: block;
+		padding: 2.5px 3px 3px 2.5px;
+		margin : 0 auto 10px;
+
+		background-repeat  : no-repeat;
+		background-position: center;
+		background-size    : 100%;
+		background-image   : url("/assets/images/icons/icon-152x152.png");
+
+		border-radius: 15px;
+
+		max-width: 110px;
+		min-height: 79px;
+
+		&__picture {
+			border-radius: 12px;
+
+			display: block;
+			margin : 0 auto;
+		}
+	}
+
+	&__info {
+		&__item {
+			padding: 10px 0;
+
+			overflow     : hidden;
+			white-space  : nowrap;
+			text-overflow: ellipsis;
+
+			&__label {
+				font-weight: bold;
+				font-size  : 13px;
+
+				color      : $color-dark-grey;
 			}
 		}
 	}
 
-	.divider {
+	.aph.btn {
 		margin: 10px 0;
+	}
+
+	@include md {
+		margin-top: -20px;
+
+		&__avatar {
+			min-height: 63px;
+		}
+	}
+
+	@include sm {
+		margin-top: -55px;
+
+		&__avatar {
+			min-height: 104px;
+		}
+	}
+
+	@include xs {
+		margin-top: -40px;
+
+		&__avatar {
+			max-width : 80px;
+			max-height: 80px;
+		}
+
+		&__info {
+			&__item {
+				display: block;
+			}
+		}
 	}
 }

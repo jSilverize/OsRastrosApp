@@ -18,6 +18,11 @@ gulp.task('serve', () => {
         injectChanges: true,
         minify: false,
         open: false,
+        ghostMode: {
+            clicks: false,
+            forms: false,
+            scroll: false
+        },
         server: {
             baseDir: SRC
         }
@@ -43,6 +48,11 @@ gulp.task('serve:dist', () => {
         injectChanges: true,
         minify: true,
         open: false,
+        ghostMode: {
+            clicks: false,
+            forms: false,
+            scroll: false
+        },
         server: {
             baseDir: paths.dist
         }

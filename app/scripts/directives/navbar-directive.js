@@ -23,6 +23,8 @@ angular.module('rastros')
 
 			$scope.logout = function () {
 				authentication.logout();
+
+				flow.reload();
 			};
 		},
 	};

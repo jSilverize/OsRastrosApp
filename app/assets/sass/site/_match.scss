@@ -104,11 +104,13 @@ $this: ".match";
                 background-image   : url("/assets/images/icons/icon--check--yellow.svg");
 
                 cursor: pointer;
+                transition: width .2s linear;
 
-                transition: .2s background-image linear;
+                &.ng-hide,
+                &.ng-hide-add {
+                    animation: fadeOut .2s;
 
-                &:hover {
-                    background-image: url("/assets/images/icons/icon--check--green.svg");
+                    width: 0;
                 }
             }
         }

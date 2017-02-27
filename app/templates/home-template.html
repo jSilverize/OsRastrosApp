@@ -68,15 +68,13 @@
 							</div>
 							<div class="match__going__users">
 								<img class="match__going__users__avatar"
-									 data-ng-repeat="user in match.goingProfiles"
-									 title="{{ user.name }}"
-									 alt="{{ user.name }}"
-									 data-ng-src="{{ user.photoURL }}"
-									 width="30"
-									 height="30" />
+									 data-ng-repeat="people in match.goingProfiles"
+									 title="{{ people.name }}"
+									 alt="{{ people.name }}"
+									 data-ng-src="{{ people.photoURL }}" />
 
 								<button class="match__going__users__avatar"
-									 data-ng-if="!match.goingProfiles || match.goingProfiles.length === 0"
+									 data-ng-show="!match.goingProfiles || match.goingProfiles.length === 0"
 									 title="Confirmar presença?"
 									 data-ng-click="imGoing(match);">
 								</button>
@@ -88,14 +86,21 @@
 								<a class="aph btn btn--small btn--block btn--link btn--black"
 								   target="_blank"
 								   title="Ver no site da Futliga"
-								   href="{{ detailsUrl + match.date.id + '/' + match.id }}">
+								   href="{{ detailsUrl + match.date.id + '/' + match.id }}#confronto-mapa">
 									Local
 								</a>
 							</div>
 							<div class="col-xs-6">
 								<button class="aph btn btn--small btn--block btn--link btn--green"
-								   		data-ng-click="imGoing(match);">
+								   		data-ng-click="imGoing(match);"
+								   		data-ng-show="!match.imGoing">
 									Vou colar!
+								</button>
+
+								<button class="aph btn btn--small btn--block btn--link btn--red"
+								   		data-ng-click="imNotGoing(match);"
+								   		data-ng-show="match.imGoing && user.uid">
+									Não vou +
 								</button>
 							</div>
 						</div>

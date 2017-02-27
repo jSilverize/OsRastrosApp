@@ -5,6 +5,7 @@
 html,
 body {
 	font-family: 'Quicksand', 'Roboto', sans-serif;
+	font-weight: 500;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -22,7 +23,7 @@ a.aph__list__item__link,
 		color: $color-green;
 
 		&:hover {
-			color: $color-red;
+			color: $color-black;
 		}
 	}
 }

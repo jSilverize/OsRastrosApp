@@ -7,28 +7,28 @@
 </header>
 <section class="section">
 	<div class="aph container">
-		<div class="row center-sm center-md center-lg">
-			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
+		<div class="row center-xs center-sm center-md center-lg">
+			<div class="col-xs-10 col-sm-5 col-md-4 col-lg-3">
 				<form class="aph form form--with-fields"
 					  name="registerForm"
 					  novalidate=""
 					  data-form-validation="registerForm"
-					  data-ng-submit="registerForm.$valid && login();">
-					<div class="aph form__field">
+					  data-ng-submit="registerForm.$valid && register();">
+					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--facebook"
 								type="button"
 								data-ng-click="facebook()">
 							CADASTRAR COM FACEBOOK
 						</button>
 					</div>
-					<div class="aph form__field">
+					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--twitter"
 								type="button"
 								data-ng-click="twitter()">
 							CADASTRAR COM TWITTER
 						</button>
 					</div>
-					<div class="aph form__field form__or text-center">
+					<div class="aph form__field form__field--large form__or text-center">
 						OU ENTÃO
 					</div>
 					<div class="aph form__field">
@@ -105,8 +105,7 @@
 							A senha não está igual
 						</div>
 					</div>
-					<div class="aph form__field">
-						<br />
+					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--green"
 								type="submit"
 								data-ng-disabled="!form.email || !form.password || !form.passwordCheck || form.password !== form.passwordCheck || registerForm.$submitted">

@@ -1,72 +1,67 @@
-<header class="header">
-	<div class="container">
-		<h1 class="header__title">
-			Meu Perfil
+<header class="header header--no-mb">
+	<div class="aph container text-center">
+		<h1 class="aph header__title">
+			Meu perfil
 		</h1>
 	</div>
 </header>
 
-<section class="section">
-	<div class="container">
-		<div class="row">
-			<div class="col s12 m7 l6">
-				<h4>
-					Informações
-				</h4>
-				<div class="section">
-					<div class="card horizontal profile">
-						<div class="card-image">
-							<img data-ng-src="{{ user.photoURL }}"
-								 data-ng-if="user.photoURL" />
-							<img data-ng-src="./assets/images/os-rastros.gif"
-								 data-ng-if="!user.photoURL" />
-						</div>
-						<div class="card-stacked">
-							<div class="card-content">
-								<div class="card-title"
-									 data-ng-if="user.displayName">
-									{{ user.displayName }}
-								</div>
-								<div class="divider"></div>
-								<div data-ng-if="user.email">
-									{{ user.email }}
-								</div>
-							</div>
-						</div>
+<section class="profile">
+	<div class="aph container">
+
+		<div class="row bottom-sm bottom-md bottom-lg">
+
+			<div class="col-xs-12 col-sm-2 col-md-1">
+				<figure class="profile__avatar">
+					<img class="profile__avatar__picture aph img-responsive"
+						 data-ng-src="{{ profile.photoURL }}"
+						 data-ng-if="profile.photoURL" />
+					<img class="profile__avatar__picture aph img-responsive"
+						 data-ng-src="./assets/images/os-rastros.gif"
+						 data-ng-if="!profile.photoURL" />
+				</figure>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 profile__info">
+
+				<div class="profile__info__item"
+					 title="{{ profile.displayName || profile.email }}">
+					<div class="profile__info__item__label">
+						<span data-ng-if="profile.displayName">
+							Nome
+						</span>
+						<span data-ng-if="!profile.displayName">
+							E-mail
+						</span>
 					</div>
+					{{ profile.displayName || profile.email }}
 				</div>
+
 			</div>
-			<div class="col l2 hide-on-med-down"></div>
-			<div class="col s12 m5 l4">
-				<h4>
-					Mais opções
-					<small>
-						(em breve)
-					</small>
-				</h4>
-				<div class="section">
-					<button class="waves-effect waves-light btn block"
-							type="button"
-							data-ng-click="facebookLink()"
-							disabled>
-						CONECTAR AO FACEBOOK
-					</button>
+
+			<div class="col-xs-12 col-sm-3 col-md-4 col-lg-6 profile__info">
+
+				<div class="profile__info__item"
+					 data-ng-if="profile.email && profile.displayName"
+					 title="{{ profile.email }}">
+					<div class="profile__info__item__label">
+						E-mail
+					</div>
+					{{ profile.email }}
 				</div>
-				<button class="waves-effect waves-light btn block"
+
+			</div>
+
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2"
+				 title="EM CONTRUÇÃO">
+				<button class="aph btn btn--block btn--green"
 						type="button"
-						data-ng-click="twitterLink()"
-						disabled>
-					CONECTAR AO TWITTER
+						data-ng-click="edit();"
+						data-ng-disabled="true">
+					Editar Perfil
 				</button>
-				<div class="section">
-					<button class="waves-effect waves-light btn block"
-							type="button"
-							data-ng-click="googleLink()"
-							disabled>
-						CONECTAR AO GOOGLE+
-					</button>
-				</div>
 			</div>
+
 		</div>
 	</div>
 </section>

@@ -91,8 +91,8 @@ angular.module('rastros')
 			.then(function () {
 				loader.stop(loadMsg);
 			})
-			.catch(function (error) {
-				console.error(error);
+			.catch(function () {
+				loader.stop(loadMsg);
 
 				loader.error(
 					'<div class="aph loader__content__error__title">Ish...</div>' +
@@ -105,9 +105,8 @@ angular.module('rastros')
 			});
 	};
 
-	function writeUserData (user) {
-		if (fireb.getById(user.uid)) {
-			// TODO
+	factory._writeUserData = function (user) {
+		if (!user) {
 			return;
 		}
 
@@ -120,7 +119,7 @@ angular.module('rastros')
 		};
 
 		fireb.create(user.uid, newUser);
-	}
+	};
 
 	auth.onAuthStateChanged(function (_user) {
 		$document.find('body')[0].click();
@@ -129,7 +128,7 @@ angular.module('rastros')
 			user.data = _user;
 			$rootScope.$broadcast('user:changed', user.data);
 
-			writeUserData(_user);
+			factory._writeUserData(_user);
 			return;
 		}
 
