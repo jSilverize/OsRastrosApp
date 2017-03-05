@@ -1,7 +1,9 @@
 'use strict';
 
-const gulp   = require('gulp'),
-      reqDir = require('require-dir');
+const gulp     = require('gulp'),
+      sequence = require('gulp-sequence'),
+      exec     = require('child_process').exec,
+      reqDir   = require('require-dir');
 
 // Require gulp tasks
 const dir = reqDir('./tasks');
@@ -16,8 +18,8 @@ gulp.task('default', [
     'js-hint',
     'sass'
 ], () => {
-    gulp.watch([dir.paths.js.src], ['js-hint']);
-    gulp.watch(dir.paths.html, ['ng-template']);
+    gulp.watch(dir.paths.js.src,  ['js-hint']);
+    gulp.watch(dir.paths.html,    ['ng-template']);
     gulp.watch(dir.paths.sassAll, ['sass']);
 });
 
@@ -42,3 +44,26 @@ gulp.task('build', [
     'svg-min',
     'usemin'
 ]);
+
+
+/**
+ * Firebase Deploy task
+ */
+gulp.task('firebaseDeploy', function (cb) {
+    exec('firebase deploy', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
+});
+
+
+/**
+ * Deploy task
+ */
+gulp.task('deploy',
+    sequence(
+        'build',
+        'firebaseDeploy'
+    )
+);

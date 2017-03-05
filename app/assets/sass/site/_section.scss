@@ -2,4 +2,11 @@ $this: ".section";
 
 #{$this} {
 	padding: 40px 0;
+
+	h1 {
+		&.aph,
+		&.aph.support {
+			margin-top: -1px;
+		}
+	}
 }

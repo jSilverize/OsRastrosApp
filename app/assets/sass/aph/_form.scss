@@ -3,11 +3,26 @@ $this: ".aph.form";
 #{$this} {
 	&__field {
 		&.form__or {
-			padding-top: 10px;
+			padding-top: 15px;
+
+			color      : $color-dark-grey;
+			font-weight: bolder;
 		}
 	}
 
 	&__control {
+		&[type="text"],
+		&[type="email"],
+		&[type="password"],
+		&[type="number"],
+		&[type="url"],
+		&[type="file"] {
+			&:-webkit-autofill {
+	            -webkit-box-shadow     : 0 0 0 1000px $color-smoke inset !important;
+	            -webkit-text-fill-color: $color-green !important;
+	        }
+		}
+
 		&:focus {
 			border-color: $color-green !important;
 		}

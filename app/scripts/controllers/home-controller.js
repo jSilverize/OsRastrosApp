@@ -58,8 +58,10 @@ angular.module('rastros')
 	    			$scope.$apply();
 	    		});
 
-	    	if ($rootScope.user) {
-	    		if (key === $rootScope.user.uid) {
+    		var user = $rootScope.user;
+
+	    	if (user) {
+	    		if (key === user.uid) {
 	    			match.imGoing = true;
 	    		}
 	    	}
@@ -84,11 +86,9 @@ angular.module('rastros')
 			return;
 		}
 
-		var path = 'games/' + match.date.id + '-' + match.id + '/going/' + user.uid;
+		match.imGoing = true;
 
-		firebase.database().ref(path).set({
-			confirmStamp: moment().format('YYYY-MM-DD[T]HH:mm:ss')
-		});
+		fireb.games.imIn(match, user);
 	};
 
 	$scope.imNotGoing = function (match) {
@@ -100,13 +100,15 @@ angular.module('rastros')
 			return;
 		}
 
-		var path = 'games/' + match.date.id + '-' + match.id + '/going';
+		match.imGoing = false;
 
-		firebase.database().ref(path).child(user.uid).remove();
+		fireb.games.imOut(match, user);
 	};
 
 	$scope.saveGames = function (games) {
-		if (!games || !$rootScope.user) {
+		var user = $rootScope.user;
+
+		if (!games || !user) {
 			return;
 		}
 
@@ -124,7 +126,7 @@ angular.module('rastros')
     				return;
     			}
 
-    			fireb.createMatch(match);
+    			fireb.games.create(match);
     		});
 	};
 

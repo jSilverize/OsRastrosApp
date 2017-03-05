@@ -3,6 +3,7 @@ $this: ".aph.navbar";
 #{$this} {
 	display: block;
 	color  : $color-green;
+	z-index: 1060;
 
 	&__nav {
 		#{$this} {

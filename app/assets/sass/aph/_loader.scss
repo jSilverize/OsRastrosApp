@@ -1,13 +1,10 @@
 $this: ".aph.loader";
 
 #{$this} {
+	background-color: rgba($color-black, .95);
+
 	&__content {
 		&__spinner {
-			animation: fadeIn .5s;
-
-			&.ng-leave {
-				animation: fadeOut .5s;
-			}
 
 			&__image {
 				border-radius: 0;
@@ -17,12 +14,23 @@ $this: ".aph.loader";
 			}
 		}
 
+		&__spinner,
+		&__spinner__image {
+			animation: fadeIn .5s;
+
+			&.ng-leave,
+			&.ng-hide-add {
+				animation: fadeOut .5s;
+			}
+		}
+
 		&__message {
-			color: $color-black;
+			color: $color-white;
 
 			animation : fadeIn .5s;
 
-			&.ng-leave {
+			&.ng-leave,
+			&.ng-hide-add {
 				color: $color-grey;
 
 				animation: fadeOut .5s;

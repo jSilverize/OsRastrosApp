@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('rastros')
-.factory('authentication', function ($rootScope, $document, $window,
-	fireb, user, loader, flow) {
+.factory('authentication', function ($rootScope, $document, $window, $q,
+	fireb, user, loader, flow, config) {
 	var auth    = firebase.auth();
 	var factory = {};
 
@@ -72,6 +72,7 @@ angular.module('rastros')
 
 	factory.facebook = function () {
 		var provider = new firebase.auth.FacebookAuthProvider();
+		provider.addScope(config.FACEBOOK.SCOPE);
 
 		factory.provider(provider, 'Facebook');
 	};
@@ -87,22 +88,42 @@ angular.module('rastros')
 
 		loader.start(loadMsg);
 
-		auth.signInWithPopup(provider)
-			.then(function () {
-				loader.stop(loadMsg);
-			})
-			.catch(function () {
-				loader.stop(loadMsg);
+		auth.signInWithRedirect(provider);
+	};
 
+	factory.resetPassword = function (email) {
+		var deferred = $q.defer();
+
+		if (!email) {
+			console.info(
+				'Necessário um endereço de e-mail para envio ' +
+				'da mensagem de redefinição de senha.'
+			);
+
+			deferred.reject();
+
+			return deferred.promise;
+		}
+
+		auth.sendPasswordResetEmail(email)
+			.then(function () {
+				// Toast: email sent
+				console.info('E-mail de redefinição de senha enviado');
+
+				deferred.resolve();
+			}, function (error) {
 				loader.error(
-					'<div class="aph loader__content__error__title">Ish...</div>' +
-					'Não deu bom tentando fazer o login com o ' +
-					title +
-					'<br />Tenta de novo aí, vai que funfa...'
+					'<div class="aph loader__content__error__title">Eita, fusão</div>' +
+					'Não deu pra enviar a mensagem de redefinição de senha por causa ' +
+					'disso aqui, se liga:<br />' +
+					error.message
 				);
 
-				$document.find('body')[0].click();
+				deferred.reject(error);
 			});
+
+		return deferred.promise;
+
 	};
 
 	factory._writeUserData = function (user) {
@@ -115,10 +136,10 @@ angular.module('rastros')
 			email        : user.email,
 			emailVerified: user.emailVerified,
 			photoURL     : user.photoURL,
-			permission   : 'default'
+			permission   : 'default',
 		};
 
-		fireb.create(user.uid, newUser);
+		fireb.profiles.create(user.uid, newUser);
 	};
 
 	auth.onAuthStateChanged(function (_user) {

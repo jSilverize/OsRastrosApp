@@ -8,7 +8,7 @@
 <section class="section">
 	<div class="aph container">
 		<div class="row center-xs center-sm center-md center-lg">
-			<div class="col-xs-10 col-sm-5 col-md-4 col-lg-3">
+			<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
 				<form class="aph form form--with-fields"
 				      name="loginForm"
 				      novalidate=""
@@ -17,14 +17,14 @@
 					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--facebook"
 								type="button"
-								data-ng-click="facebook()">
+								data-ng-click="facebook();">
 							ENTRAR COM FACEBOOK
 						</button>
 					</div>
 					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--twitter"
 								type="button"
-								data-ng-click="twitter()">
+								data-ng-click="twitter();">
 							ENTRAR COM TWITTER
 						</button>
 					</div>
@@ -34,7 +34,7 @@
 					<div class="aph form__field">
 						<label class="aph form__label"
 							   for="email">
-							E-mail
+							E-mail*
 						</label>
 						<input class="aph form__control"
 							   type="email"
@@ -42,11 +42,15 @@
 							   id="email"
 							   data-ng-required="true"
 							   data-ng-model="form.email" />
+						<div class="aph form__helper form__helper--error"
+							 data-ng-show="loginForm['email'].$invalid && !loginForm['email'].$pristine">
+							Preencha com um e-mail válido
+						</div>
 					</div>
 					<div class="aph form__field">
 						<label class="aph form__label"
 							   for="password">
-							Senha:
+							Senha*
 						</label>
 						<input class="aph form__control"
 							   type="password"
@@ -54,12 +58,24 @@
 							   id="password"
 							   data-ng-required="true"
 							   data-ng-model="form.password" />
+						<div class="aph form__helper form__helper--error"
+							 data-ng-show="loginForm['password'].$invalid && !loginForm['password'].$pristine">
+							Insira sua senha
+						</div>
 					</div>
 					<div class="aph form__field form__field--large">
 						<button class="aph btn btn--block btn--green"
 								type="submit"
 								data-ng-disabled="!form.email || !form.password">
 							ENTRAR
+						</button>
+					</div>
+					<div class="aph form__field form__field--large">
+						<button class="aph btn btn--block btn--bordered btn--yellow"
+								type="button"
+								data-ng-disabled="loginForm['email'].$invalid || sentResetPassowrd"
+								data-ng-click="forgetPassword(); sentResetPassowrd = true;">
+							ESQUECI A SENHA
 						</button>
 					</div>
 				</form>

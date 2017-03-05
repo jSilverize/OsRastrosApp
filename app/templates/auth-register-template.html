@@ -8,7 +8,7 @@
 <section class="section">
 	<div class="aph container">
 		<div class="row center-xs center-sm center-md center-lg">
-			<div class="col-xs-10 col-sm-5 col-md-4 col-lg-3">
+			<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
 				<form class="aph form form--with-fields"
 					  name="registerForm"
 					  novalidate=""
@@ -41,7 +41,8 @@
 							   name="email"
 							   id="email"
 							   data-ng-required="true"
-							   data-ng-model="form.email" />
+							   data-ng-model="form.email"
+							   autocomplete="off" />
 						<div class="aph form__helper form__helper--error"
 							 data-ng-show="registerForm['email'].$invalid && !registerForm['email'].$pristine">
 							Preencha com um e-mail válido
@@ -58,7 +59,8 @@
 							   id="emailCheck"
 							   data-ng-match="form.email"
 							   data-ng-required="true"
-							   data-ng-model="form.emailCheck" />
+							   data-ng-model="form.emailCheck"
+							   autocomplete="off" />
 						<div class="aph form__helper form__helper--error"
 							 data-ng-show="registerForm['emailCheck'].$invalid && !registerForm['emailCheck'].$pristine">
 							Repita o e-mail correspondente

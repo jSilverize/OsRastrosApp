@@ -33,6 +33,14 @@ angular.module('rastros')
 		authentication.register(form.email, form.password);
 	};
 
+	$scope.forgetPassword = function () {
+		if (!$scope.form.email) {
+			return;
+		}
+
+		authentication.resetPassword($scope.form.email);
+	};
+
 	$scope.$on('user:changed', function (event, data) {
 		$scope.user = data;
 
