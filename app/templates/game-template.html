@@ -1,0 +1,50 @@
+ <header class="header">
+	<div class="aph container">
+		<h1 class="header__title aph support text-center">
+			Súmula do Jogo
+		</h1>
+	</div>
+</header>
+<section class="section">
+	<div class="container">
+
+		<div>
+
+			<div class="match__date">
+				<div class="match__date__weekday">
+					{{ game.date.moment.format('dddd') }}
+				</div>
+				<div class="match__date__fulldate">
+					{{ game.date.moment.format('DD [de] MMMM [de] YYYY') }}
+				</div>
+				<div class="match__date__time">
+					{{ game.date.moment.format('HH:mm') }}
+				</div>
+			</div>
+
+			<div class="match__teams">
+
+				<div class="match__team">
+					<img class="match__team__logo"
+						 data-ng-src="{{ game.teams.home.logo }}"
+						 data-error-src="{{ game.teams.home.logoOld }}"
+						 />
+					{{ game.teams.home.title }}
+				</div>
+
+				<div class="match__versus">×</div>
+
+				<div class="match__team">
+					<img class="match__team__logo"
+						 data-ng-src="{{ game.teams.visitor.logo }}"
+						 data-error-src="{{ game.teams.visitor.logoOld }}"
+						 />
+					{{ game.teams.visitor.title }}
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>

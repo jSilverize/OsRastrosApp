@@ -43,6 +43,24 @@ angular.module('rastros')
             authPage     : false,
             authenticated: true,
         })
+        .when('/jogos/:dateId/:gameId', {
+            templateUrl  : 'app/templates/game-template.html',
+            controller   : 'GameController',
+            authPage     : false,
+            authenticated: true,
+            resolve      : {
+                gameResolved: function ($route, fireb) {
+                    var dateId = $route.current.params.dateId;
+                    var gameId = $route.current.params.gameId;
+
+                    if (!dateId || !gameId) {
+                        console.log('tá errado');
+                    }
+
+                    return fireb.games.get(dateId, gameId);
+                }
+            }
+        })
         .otherwise({
             redirectTo: '/404'
         });

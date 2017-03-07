@@ -139,7 +139,17 @@ angular.module('rastros')
 			permission   : 'default',
 		};
 
-		fireb.profiles.create(user.uid, newUser);
+		fireb.profiles.getById(user.uid)
+			.then(function (data) {
+				if (!data) {
+					fireb.profiles.create(user.uid, newUser);
+
+				} else {
+					delete newUser.permission;
+
+					fireb.profiles.update(user.uid, newUser);
+				}
+			});
 	};
 
 	auth.onAuthStateChanged(function (_user) {

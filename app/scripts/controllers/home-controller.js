@@ -2,11 +2,12 @@
 
 angular.module('rastros')
 .controller('HomeController', function ($rootScope, $scope,
-	loader, flow, urls, futliga, fireb) {
+	loader, flow, urls, futliga, fireb, user, moment) {
 
-	$scope.nextMatches = null;
-	$scope.count       = {};
-	$scope.detailsUrl  = urls.FUTLIGA.INDEX + urls.FUTLIGA.AGENDA_PATH;
+	$scope.nextMatches  = null;
+	$scope.count        = {};
+	$scope.detailsUrl   = urls.FUTLIGA.INDEX + urls.FUTLIGA.AGENDA_PATH;
+	$scope.canFillGames = false;
 
 	$scope.matches = function () {
 		var loadMsg = 'Calendário da Futliga';
@@ -130,6 +131,40 @@ angular.module('rastros')
     		});
 	};
 
+	$scope._canFillGames = function (uid) {
+		fireb.profiles.getById(uid)
+			.then(function (profile) {
+				if (profile.permission === 'root') {
+					$scope.canFillGames = true;
+				}
+			});
+	};
+
+	$scope.isToday = function (match) {
+		if (!match) {
+			return false;
+		}
+
+		var todayDate = moment();
+		var matchDate = moment(match.date.year + '-' + match.date.month + '-' + match.date.day);
+
+		var itIs = false;
+
+		if (todayDate.isSameOrAfter(matchDate)) {
+			itIs = true;
+		}
+
+		return itIs;
+	};
+
+	$scope.fillGame = function (match) {
+		if (!match) {
+			return;
+		}
+
+		flow.goTo('/jogos/' + match.date.id + '/' + match.id);
+	};
+
     $scope.otherPage = function () {
         flow.goTo('/404');
     };
@@ -140,5 +175,11 @@ angular.module('rastros')
     $scope.$on('$viewContentLoaded', function () {
     	$scope.matches();
     });
+
+	$scope.$watch('user', function () {
+		if (user.data) {
+			$scope._canFillGames(user.data.uid);
+		}
+	});
 
 });

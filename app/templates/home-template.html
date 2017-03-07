@@ -81,7 +81,7 @@
 							</div>
 						</div>
 
-						<div class="row">
+						<div class="row center-lg center-md center-sm center-xs">
 							<div class="col-xs-6">
 								<a class="aph btn btn--small btn--block btn--link btn--black"
 								   target="_blank"
@@ -101,6 +101,14 @@
 								   		data-ng-click="imNotGoing(match);"
 								   		data-ng-show="match.imGoing && user.uid">
 									Não vou +
+								</button>
+							</div>
+							<div class="col-xs-12"
+								 data-ng-show="canFillGames && isToday(match);">
+								<br />
+								<button class="aph btn btn--small btn--block btn--yellow"
+								   		data-ng-click="fillGame(match);">
+									Preencher Súmula
 								</button>
 							</div>
 						</div>

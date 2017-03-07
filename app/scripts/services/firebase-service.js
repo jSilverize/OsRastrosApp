@@ -13,12 +13,21 @@ angular.module('rastros')
 
 	        database.ref('profiles/' + uid).set(profile);
         },
-        getById: function (profileId) {
-			if (!profileId) {
+		update: function (uid, profile) {
+			if (!uid || !profile) {
 				return;
 			}
 
-			var deferred = $q.defer();
+	        database.ref('profiles/' + uid).update(profile);
+        },
+        getById: function (profileId) {
+        	var deferred = $q.defer();
+
+			if (!profileId) {
+				deferred.reject();
+
+				return deferred.promise;
+			}
 
 			database.ref('profiles/' + profileId)
 				.on('value', function (snapshot) {
@@ -81,6 +90,36 @@ angular.module('rastros')
 
 			database.ref(path).child(profile.uid).remove();
         },
+        get: function (dateId, gameId) {
+        	var deferred = $q.defer();
+
+        	if (!dateId || !gameId) {
+        		deferred.reject();
+
+        		return deferred.promise;
+        	}
+
+        	var path =
+        		'games/' +
+        		dateId +
+        		'-' +
+        		gameId;
+
+        	database.ref(path)
+				.on('value', function (snapshot) {
+					var content = snapshot.val();
+
+					if (!content) {
+						deferred.reject();
+
+						return;
+					}
+
+					deferred.resolve(content);
+				});
+
+			return deferred.promise;
+        }
 	};
 
 	factory.teams = {
