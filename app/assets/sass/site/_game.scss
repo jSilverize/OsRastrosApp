@@ -1,0 +1,40 @@
+$this: ".game";
+
+#{$this} {
+	margin: 4px 0 5px;
+
+	&__frame {
+		&__score {
+			font-size  : 42px;
+			line-height: 30px;
+		}
+
+		&__title {
+			margin: 4px 0 24px;
+		}
+
+		&__score,
+		&__title {
+			color: $color-grey;
+		}
+
+		h3.aph.section__title {
+			margin-top: -4px;
+		}
+	}
+
+	&__goal {
+		margin: 5px 0;
+
+		font-size  : 13px;
+		line-height: 20px;
+
+		&s {
+			margin: 15px 0;
+		}
+
+		&__remove {
+
+		}
+	}
+}

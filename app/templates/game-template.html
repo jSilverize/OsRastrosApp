@@ -8,7 +8,7 @@
 <section class="section">
 	<div class="container">
 
-		<div>
+		<div class="game">
 
 			<div class="match__date">
 				<div class="match__date__weekday">
@@ -46,5 +46,150 @@
 
 		</div>
 
+	</div>
+</section>
+
+<div class="container">
+	<hr class="aph divider" />
+</div>
+
+<section class="section game__frame">
+	<div class="container">
+		<h3 class="aph section__title text-center">
+			Primeira Partida
+		</h3>
+
+		<div class="row aph text-center">
+			<div class="col-xs-5">
+				<div class="game__frame__score">
+					{{ game.teams.home.score.first.goals.length }}
+				</div>
+			</div>
+			<div class="col-xs-2">
+				<h4 class="aph game__frame__title">
+					GOLS
+				</h4>
+			</div>
+			<div class="col-xs-5">
+				<div class="game__frame__score">
+					{{ game.teams.visitor.score.first.goals.length }}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="aph text-right">
+					<button class="aph btn btn--small btn--bordered btn--green"
+							type="button"
+							data-ng-click="addGoal('home', 'first');">
+						<i class="fa fa-lg fa-plus-circle"></i>
+						GOL
+					</button>
+				</div>
+			</div>
+
+			<div class="col-xs-6">
+				<div class="aph text-left">
+					<button class="aph btn btn--small btn--bordered btn--yellow"
+							type="button"
+							data-ng-click="addGoal('visitor', 'first');">
+						GOL
+						<i class="fa fa-lg fa-plus-circle"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="aph text-right">
+					<div class="game__goals">
+						<div class="game__goal"
+							 data-ng-repeat="goal in game.teams.home.score.first.goals"
+							 data-goal-index="{{ $index }}">
+
+							<a class="game__goal__remove"
+							   data-ng-click="removeGoal('home', 'first', $index);">
+								<i class="fa fa-fw fa-times"></i>
+							</a>
+
+							<span class="game__goal__player">
+								{{ goal.player.name }}
+								<span class="game__goal__player__number"
+								      data-ng-show="goal.player.number">
+									{{ goal.player.number }}
+								</span>
+							</span>
+
+							<span class="game__goal__time"
+								  data-ng-show="goal.time">
+								{{ goal.time }}
+							</span>
+
+							<i class="fa fa-fw fa-lg fa-futbol-o"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-6">
+				<div class="aph text-left">
+					<div class="game__goals">
+						<div class="game__goal"
+							 data-ng-repeat="goal in game.teams.visitor.score.first.goals"
+							 data-goal-index="{{ $index }}">
+
+							<i class="fa fa-fw fa-lg fa-futbol-o"></i>
+
+							<span class="game__goal__time"
+								  data-ng-show="goal.time">
+								{{ goal.time }}
+							</span>
+
+							<span class="game__goal__player">
+								<span class="game__goal__player__number"
+								      data-ng-show="goal.player.number">
+									{{ goal.player.number }}
+								</span>
+								{{ goal.player.name }}
+							</span>
+
+							<a class="game__goal__remove"
+							   data-ng-click="removeGoal('visitor', 'first', $index);">
+								<i class="fa fa-fw fa-times"></i>
+							</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row"
+			 data-ng-show="game.teams.home.score.first.goals.length > 4 || game.teams.visitor.score.first.goals.length > 4">
+			<div class="col-xs-6">
+				<div class="aph text-right">
+					<button class="aph btn btn--small btn--bordered btn--green"
+							type="button"
+							data-ng-click="addGoal('home', 'first');">
+						<i class="fa fa-lg fa-plus-circle"></i>
+						GOL
+					</button>
+				</div>
+			</div>
+
+			<div class="col-xs-6">
+				<div class="aph text-left">
+					<button class="aph btn btn--small btn--bordered btn--yellow"
+							type="button"
+							data-ng-click="addGoal('visitor', 'first');">
+						GOL
+						<i class="fa fa-lg fa-plus-circle"></i>
+					</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>

@@ -148,7 +148,7 @@ angular.module('rastros')
 		var todayDate = moment();
 		var matchDate = moment(match.date.year + '-' + match.date.month + '-' + match.date.day);
 
-		var itIs = false;
+		var itIs = true;
 
 		if (todayDate.isSameOrAfter(matchDate)) {
 			itIs = true;

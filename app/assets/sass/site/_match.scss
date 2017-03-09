@@ -103,7 +103,6 @@ $this: ".match";
                 background-size    : 28px;
                 background-image   : url("/assets/images/icons/icon--check--yellow.svg");
 
-                cursor: pointer;
                 transition: width .2s linear;
 
                 &.ng-hide,
@@ -111,6 +110,12 @@ $this: ".match";
                     animation: fadeOut .2s;
 
                     width: 0;
+                }
+            }
+
+            &__avatar {
+                &[type="button"] {
+                    cursor: pointer;
                 }
             }
         }

@@ -3,7 +3,9 @@ $this: ".section";
 #{$this} {
 	padding: 40px 0;
 
-	h1 {
+	h1,
+	h2,
+	h3 {
 		&.aph,
 		&.aph.support {
 			margin-top: -1px;

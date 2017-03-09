@@ -71,7 +71,8 @@
 									 data-ng-repeat="people in match.goingProfiles"
 									 title="{{ people.name }}"
 									 alt="{{ people.name }}"
-									 data-ng-src="{{ people.photoURL }}" />
+									 data-ng-src="{{ people.photoURL }}"
+									 data-error-src="/assets/images/icons/icon-60x60.png" />
 
 								<button class="match__going__users__avatar"
 									 data-ng-show="!match.goingProfiles || match.goingProfiles.length === 0"
