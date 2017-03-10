@@ -6,7 +6,7 @@
 	</div>
 </header>
 <section class="section">
-	<div class="container">
+	<div class="aph container">
 
 		<div class="game">
 
@@ -54,7 +54,7 @@
 </div>
 
 <section class="section game__frame">
-	<div class="container">
+	<div class="aph container">
 		<h3 class="aph section__title text-center">
 			Primeira Partida
 		</h3>
@@ -106,8 +106,9 @@
 				<div class="aph text-right">
 					<div class="game__goals">
 						<div class="game__goal"
-							 data-ng-repeat="goal in game.teams.home.score.first.goals"
-							 data-goal-index="{{ $index }}">
+							 data-ng-repeat="goal in game.score.first.home.goals"
+							 data-goal-index="{{ $index }}"
+							 data-on-long-press="removeGoal('home', 'first', $index);">
 
 							<a class="game__goal__remove"
 							   data-ng-click="removeGoal('home', 'first', $index);">
@@ -137,8 +138,9 @@
 				<div class="aph text-left">
 					<div class="game__goals">
 						<div class="game__goal"
-							 data-ng-repeat="goal in game.teams.visitor.score.first.goals"
-							 data-goal-index="{{ $index }}">
+							 data-ng-repeat="goal in game.score.first.visitor.goals"
+							 data-goal-index="{{ $index }}"
+							 data-on-long-press="removeGoal('visitor', 'first', $index);">
 
 							<i class="fa fa-fw fa-lg fa-futbol-o"></i>
 

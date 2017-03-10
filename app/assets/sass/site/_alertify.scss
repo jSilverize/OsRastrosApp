@@ -1,0 +1,24 @@
+$this: ".alertify";
+
+#{$this} {
+	border       : 0;
+	border-radius: 4px;
+	box-shadow   : 0 0 6px -2px rgba($color-black, .75);
+
+	&-cover {
+		opacity: .9;
+	}
+
+	&-button {
+		&-ok,
+		&-cancel {
+			border   : 0;
+			min-width: 100px;
+
+			&:focus {
+				border    : 0;
+				box-shadow: none;
+			}
+		}
+	}
+}

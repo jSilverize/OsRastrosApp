@@ -29,12 +29,45 @@ $this: ".game";
 		font-size  : 13px;
 		line-height: 20px;
 
+		overflow     : hidden;
+		white-space  : nowrap;
+		text-overflow: ellipsis;
+
 		&s {
 			margin: 15px 0;
 		}
 
 		&__remove {
 
+		}
+
+		&.ng-enter,
+		&.ng-leave {
+			transition: opacity .45s ease;
+		}
+
+		&.ng-enter {
+			opacity: 0;
+
+			&-active {
+				opacity: 1;
+			}
+		}
+
+		&.ng-leave {
+			opacity: 1;
+
+			&-active {
+				opacity: 0;
+			}
+		}
+	}
+
+	@include xs {
+		&__goal {
+			&__remove {
+				display: none;
+			}
 		}
 	}
 }

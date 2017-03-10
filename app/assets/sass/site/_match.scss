@@ -88,8 +88,10 @@ $this: ".match";
 
             &__avatar {
                 display: inline-block;
+                opacity: 1;
                 width  : 30px;
                 height : 30px;
+                padding: 0;
 
                 outline      : 0;
                 border       : 0;
@@ -100,22 +102,23 @@ $this: ".match";
                 background-color   : $color-smoke;
                 background-repeat  : no-repeat;
                 background-position: center;
-                background-size    : 28px;
-                background-image   : url("/assets/images/icons/icon--check--yellow.svg");
 
-                transition: width .2s linear;
+                transition: opacity .2s linear, color .2s linear;
+
+                font-size  : 28px;
+                line-height: 0;
+
+                color: $color-yellow;
+
+                &:hover {
+                    color: $color-green;
+                }
 
                 &.ng-hide,
                 &.ng-hide-add {
                     animation: fadeOut .2s;
 
-                    width: 0;
-                }
-            }
-
-            &__avatar {
-                &[type="button"] {
-                    cursor: pointer;
+                    opacity: 0;
                 }
             }
         }

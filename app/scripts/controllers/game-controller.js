@@ -7,19 +7,28 @@ angular.module('rastros')
 
 	$scope.game.date.moment = moment(gameResolved.date.timestamp);
 
-	$scope.game.teams.home.score = {
+	$scope.game.score = {
 		first : {
-			goals : [],
-			faults: [],
+			home: {
+				goals : [],
+				faults: [],
+			},
+			visitor: {
+				goals : [],
+				faults: [],
+			},
 		},
-		second:{
-			goals : [],
-			faults: [],
+		second: {
+			home: {
+				goals : [],
+				faults: [],
+			},
+			visitor: {
+				goals : [],
+				faults: [],
+			},
 		},
 	};
-
-	$scope.game.teams.visitor.score =
-		angular.copy($scope.game.teams.home.score);
 
 	$scope.addGoal = function (team, frame) {
 		if (!team || !frame) {
@@ -28,7 +37,7 @@ angular.module('rastros')
 			return;
 		}
 
-		$scope.game.teams[team].score[frame].goals.push({
+		$scope.game.score[frame][team].goals.push({
 			time  : '\'15',
 			player: {
 				name  : 'Udimbas',
@@ -44,6 +53,34 @@ angular.module('rastros')
 			return;
 		}
 
-		$scope.game.teams[team].score[frame].goals.splice(index, 1);
+		var club = $scope.game.teams[team];
+		var goal = $scope.game.score[frame][team].goals[index];
+		var mf   = frame === 'first' ? 'Primeiro' : 'Segundo';
+		var ask  =
+			'<h3 class="aph text-red">ANULAR GOL' +
+			' da equipe <strong>' +
+			club.title +
+			'</strong>?</h3><br />' +
+			mf +
+			' Jogo<br /><br />' +
+			'<i class="fa fa-fw fa-lg fa-futbol-o"></i>' +
+			goal.time +
+			' ' +
+			goal.player.name +
+			'<br /><br />';
+
+		alertify.confirm(ask, function (ok) {
+			if (ok) {
+				$scope.game.score[frame][team].goals.splice(index, 1);
+			}
+		});
+	};
+
+	$scope.itemOnLongPress = function () {
+		console.log('Long press');
+	};
+
+	$scope.itemOnTouchEnd = function () {
+		console.log('Touch end');
 	};
 });

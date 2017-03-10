@@ -4,14 +4,14 @@
 
 html,
 body {
-	font-family: 'Quicksand', 'Roboto', sans-serif;
+	font-family: 'Quicksand', 'Roboto', 'Helvetica Neue', 'Ubuntu', 'Segoe UI', 'Arial', sans-serif;
 	font-weight: 500;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	&.aph,
 	&.aph.support {
-		font-family: 'Nunito', 'Roboto', sans-serif;
+		font-family: 'Nunito', 'Roboto', 'Helvetica Neue', 'Ubuntu', 'Segoe UI', 'Arial', sans-serif;
 	}
 }
 

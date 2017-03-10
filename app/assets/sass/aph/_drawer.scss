@@ -5,6 +5,12 @@ $this: ".aph.drawer";
 	left : -260px;
 
 	&__menu {
+		&--user {
+			position: fixed;
+			bottom  : 20px;
+			width   : 220px;
+		}
+
 		&__user {
 			overflow     : hidden;
 			white-space  : nowrap;

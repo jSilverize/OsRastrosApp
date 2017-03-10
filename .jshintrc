@@ -24,6 +24,7 @@
     "moment": false,
     "firebase": false,
     "app": false,
-    "$": false
+    "$": false,
+    "alertify": false
   }
 }

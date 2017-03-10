@@ -23,4 +23,13 @@ angular.module('rastros')
     if (!flow.ls.getItem('lastPath')) {
     	flow.ls.setItem('lastPath', '/');
     }
+
+    alertify.set({
+        labels: {
+            ok    : 'SIM',
+            cancel: 'NÃO',
+        },
+        buttonReverse: true,
+        buttonFocus  : 'cancel',
+    });
 });

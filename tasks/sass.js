@@ -6,7 +6,7 @@ const gulp  = require('gulp'),
       sourcemaps = require('gulp-sourcemaps'),
       prefixer = require('gulp-autoprefixer'),
       nano  = require('gulp-cssnano'),
-      DEST  = './app/assets';
+      DEST  = './app/assets/css';
 
 
 /**
