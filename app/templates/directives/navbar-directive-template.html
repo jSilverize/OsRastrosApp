@@ -16,6 +16,7 @@
 				data-ng-if="!user">
 				<a class="aph list__item__link"
 				   data-ng-click="goTo('/cadastrar')">
+				   <i class="fa fa-fw fa-user-plus"></i>
 					Cadastrar
 				</a>
 			</li>
@@ -23,6 +24,7 @@
 				data-ng-if="!user">
 				<a class="aph btn btn--green"
 				   data-ng-click="goTo('/entrar')">
+				   <i class="fa fa-fw fa-sign-in"></i>
 					Entrar
 				</a>
 			</li>
@@ -35,8 +37,7 @@
 			 		 height="32"
 			 		 width="32"
 			 		 alt="{{ user.displayName || user.email }}"
-				 	 data-ng-if="user.photoURL"
-				 	 data-ng-src="{{ user.photoURL }}" />
+				 	 data-ng-src="{{ user.photoURL || '/assets/images/os-rastros.gif' }}" />
 				<a class="aph list__item__link navbar__menu__user dropdown__toggle">
 					{{ user.displayName || user.email }}
 				</a>
@@ -44,12 +45,14 @@
 					<li class="aph dropdown__content__item">
 						<a class="aph dropdown__content__item__link"
 						   data-ng-click="goTo('/perfil');">
+						   <i class="fa fa-fw fa-lg fa-user"></i>
 							Meu Perfil
 						</a>
 					</li>
 					<li class="aph dropdown__content__item">
 						<a class="aph dropdown__content__item__link"
 						   data-ng-click="logout();">
+						   <i class="fa fa-fw fa-lg fa-sign-out"></i>
 							Sair
 						</a>
 					</li>
@@ -98,8 +101,7 @@
 			 		 height="32"
 			 		 width="32"
 			 		 alt="{{ user.displayName || user.email }}"
-				 	 data-ng-if="user.photoURL"
-				 	 data-ng-src="{{ user.photoURL }}" />
+				 	 data-ng-src="{{ user.photoURL || '/assets/images/os-rastros.gif' }}" />
 				{{ user.displayName || user.email }}
 			</a>
 		</li>
@@ -107,16 +109,19 @@
 			<a class="aph btn btn--green btn--block btn--small"
 			   data-ng-click="goTo('/entrar'); closeDrawer();"
 			   data-ng-if="!user">
+			   	<i class="fa fa-fw fa-sign-in"></i>
 				ENTRAR
 			</a>
 			<a class="aph btn btn--green btn--block btn--bordered btn--small"
 			   data-ng-click="goTo('/cadastrar'); closeDrawer();"
 			   data-ng-if="!user">
+			   	<i class="fa fa-fw fa-user-plus"></i>
 				CADASTRAR
 			</a>
 			<a class="aph btn btn--green btn--small btn--bordered btn--block"
 			   data-ng-click="logout(); closeDrawer();"
 			   data-ng-if="user">
+			   	<i class="fa fa-fw fa-sign-out"></i>
 				SAIR
 			</a>
 		</li>

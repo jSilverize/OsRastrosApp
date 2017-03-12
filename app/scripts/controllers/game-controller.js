@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('rastros')
-.controller('GameController', function ($rootScope, $scope, gameResolved, moment) {
+.controller('GameController', function ($rootScope, $scope,
+	gameResolved, ngDialog, moment) {
+
 	$scope.game = {};
 	angular.extend($scope.game, gameResolved);
 
@@ -37,13 +39,20 @@ angular.module('rastros')
 			return;
 		}
 
-		$scope.game.score[frame][team].goals.push({
-			time  : '\'15',
-			player: {
-				name  : 'Udimbas',
-				number: '02'
-			}
-		});
+		$scope.addGoalModal =
+			ngDialog.open({
+				template  : 'templates/modals/add-goal-modal-template.html',
+				controller: 'AddGoalModalController',
+				scope     : $scope,
+				resolve   : {
+					params: function () {
+						return {
+							team : team,
+							frame: frame,
+						};
+					}
+				},
+			});
 	};
 
 	$scope.removeGoal = function (team, frame, index) {
@@ -63,10 +72,10 @@ angular.module('rastros')
 			'</strong>?</h3><br />' +
 			mf +
 			' Jogo<br /><br />' +
-			'<i class="fa fa-fw fa-lg fa-futbol-o"></i>' +
-			goal.time +
-			' ' +
-			goal.player.name +
+			'<i class="fa fa-fw fa-lg fa-futbol-o"></i> \'' +
+			goal.minute +
+			' #' +
+			goal.player.number +
 			'<br /><br />';
 
 		alertify.confirm(ask, function (ok) {

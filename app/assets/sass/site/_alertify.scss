@@ -12,12 +12,36 @@ $this: ".alertify";
 	&-button {
 		&-ok,
 		&-cancel {
-			border   : 0;
-			min-width: 100px;
+			margin : 0 5px;
+			padding: 0 15px;
+			border : 0;
 
-			&:focus {
+			font-weight: normal;
+
+			min-width  : 100px;
+			min-height : 40px;
+			line-height: 39px;
+
+			text-shadow  : none;
+			box-shadow   : none;
+			border-radius: 20px;
+
+			&:focus,
+			&:hover,
+			&:active {
 				border    : 0;
 				box-shadow: none;
+
+				padding    : 0 15px;
+				line-height: 39px;
+			}
+		}
+
+		&-ok {
+			background: #60c659;
+
+			&:hover {
+				background: #60c659;
 			}
 		}
 	}

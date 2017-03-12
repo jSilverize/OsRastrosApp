@@ -3,11 +3,12 @@
 angular.module('rastros', [
     'ngRoute',
     'duScroll',
-    'aphrodite'
+    'aphrodite',
+    'ngDialog'
 ]);
 
 angular.module('rastros')
-.config(function ($routeProvider, momentProvider) {
+.config(function ($routeProvider, momentProvider, ngDialogProvider) {
 
     momentProvider.locale('pt-br');
 
@@ -64,4 +65,13 @@ angular.module('rastros')
         .otherwise({
             redirectTo: '/404'
         });
+
+    ngDialogProvider.setDefaults({
+        className      : 'ngdialog-theme-default aph container',
+        cache          : false,
+        plain          : false,
+        showClose      : false,
+        closeByEscape  : true,
+        closeByDocument: false,
+    });
 });

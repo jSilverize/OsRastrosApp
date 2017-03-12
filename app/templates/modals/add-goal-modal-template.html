@@ -1,0 +1,65 @@
+
+<section class="modal modal--slim aph text-center">
+	<div class="modal__container">
+		<div class="modal__header">
+			<h2 class="aph modal__header__title">
+				Adicionar Gol
+			</h2>
+			<button class="modal__close"
+					type="button"
+					data-ng-click="addGoalModal.close();">
+				<i class="fa fa-times"></i>
+			</button>
+		</div>
+
+		<div class="modal__body">
+			<form class="aph form form--with-fields"
+				  name="goalForm"
+				  novalidate
+				  data-ng-submit="saveGoal();"
+				  data-form-validation="goalForm">
+				<div class="row center-xs">
+					<div class="col-xs-6">
+						<div class="aph form__field">
+							<label class="aph form__label"
+								   for="minute">
+								MINUTO
+							</label>
+							<input class="aph form__control"
+								   type="number"
+								   id="minute"
+								   name="minute"
+								   placeholder="Ex.: 25"
+								   data-ng-required="true"
+								   data-ng-model="goal.minute" />
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="aph form__field">
+							<label class="aph form__label"
+								   for="player">
+								CAMISA
+							</label>
+							<input class="aph form__control"
+								   type="number"
+								   id="player"
+								   name="player"
+								   placeholder="Ex.: 9"
+								   data-ng-required="true"
+								   data-ng-model="goal.player" />
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="aph form__field">
+							<button class="aph btn btn--block btn--green"
+									type="submit"
+									data-ng-disabled="goalForm.$invalid">
+								ADICIONAR
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

@@ -20,6 +20,7 @@
     "angular-route": "^1.6.2",
     "angular-ui-mask": "^1.8.7",
     "font-awesome": "fontawesome#^4.7.0",
-    "alertify.js": "^0.3.11"
+    "alertify.js": "^0.3.11",
+    "ng-dialog": "^1.0.1"
   }
 }

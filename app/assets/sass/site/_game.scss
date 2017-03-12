@@ -37,6 +37,19 @@ $this: ".game";
 			margin: 15px 0;
 		}
 
+		&__player {
+			&__number {
+				display: inline-block;
+				width  : 20px;
+				padding: 0 1px 0 0;
+
+				text-align: center;
+
+				color     : $color-white;
+				background: $color-dark-grey;
+			}
+		}
+
 		&__remove {
 
 		}
