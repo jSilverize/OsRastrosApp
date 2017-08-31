@@ -3,7 +3,7 @@
 
 <section class="section">
 	<div class="aph container"
-		 data-ng-if="nextMatches">
+		 data-ng-if="nextMatches && nextMatches.length > 0">
 
 		<h1 class="aph support">
 			<span data-ng-if="nextMatches">
@@ -35,8 +35,8 @@
 
 						<div class="match__team">
 							<img class="match__team__logo"
-								 data-ng-src="{{ match.teams.home.logo }}"
-								 data-error-src="{{ match.teams.home.logoOld }}"
+								 data-ng-src="{{ match.teams.home.logoOld }}"
+								 data-error-src="./assets/images/team-logo.gif"
 								 />
 							{{ match.teams.home.title }}
 						</div>
@@ -45,8 +45,8 @@
 
 						<div class="match__team">
 							<img class="match__team__logo"
-								 data-ng-src="{{ match.teams.visitor.logo }}"
-								 data-error-src="{{ match.teams.visitor.logoOld }}"
+								 data-ng-src="{{ match.teams.visitor.logoOld }}"
+								 data-error-src="./assets/images/team-logo.gif"
 								 />
 							{{ match.teams.visitor.title }}
 						</div>
@@ -123,7 +123,7 @@
 	</div>
 
 	<div class="aph container"
-		 data-ng-if="!nextMatches">
+		 data-ng-if="!nextMatches || nextMatches.length === 0">
 		<h1 class="aph support">
 			É, dom...
 		</h1>

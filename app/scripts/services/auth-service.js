@@ -121,7 +121,6 @@ angular.module('rastros')
 
 				deferred.reject(error);
 			});
-
 		return deferred.promise;
 
 	};
@@ -133,11 +132,14 @@ angular.module('rastros')
 
 		var newUser = {
 			name         : user.displayName,
+      		displayName  : user.displayName,
 			email        : user.email,
 			emailVerified: user.emailVerified,
-			photoURL     : user.photoURL,
+			photoURL     : user.providerData[0].photoURL,
 			permission   : 'default',
 		};
+
+    	$rootScope.$broadcast('user:changed', newUser);
 
 		fireb.profiles.getById(user.uid)
 			.then(function (data) {
@@ -157,8 +159,6 @@ angular.module('rastros')
 
 		if (_user) {
 			user.data = _user;
-			$rootScope.$broadcast('user:changed', user.data);
-
 			factory._writeUserData(_user);
 			return;
 		}

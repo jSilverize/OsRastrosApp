@@ -35,5 +35,9 @@ angular.module('rastros')
 		}, 1000);
 	};
 
+	$rootScope.$on('user:changed', function (event, data) {
+		factory.data = data;
+	});
+
 	return factory;
 });

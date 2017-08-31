@@ -16,8 +16,8 @@
   ],
   "devDependencies": {
     "moment": "^2.15.1",
-    "aphrodite": "https://github.com/ingresse/aphrodite.git#^1.1.0",
-    "angular-route": "^1.6.2",
+    "aphrodite": "https://github.com/ingresse/aphrodite.git#^1.*",
+    "angular-route": "1.5.*",
     "angular-ui-mask": "^1.8.7",
     "font-awesome": "fontawesome#^4.7.0",
     "alertify.js": "^0.3.11",

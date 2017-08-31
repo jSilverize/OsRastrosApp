@@ -37,7 +37,8 @@
 			 		 height="32"
 			 		 width="32"
 			 		 alt="{{ user.displayName || user.email }}"
-				 	 data-ng-src="{{ user.photoURL || '/assets/images/os-rastros.gif' }}" />
+				 	 data-ng-src="{{ user.photoURL || '/assets/images/os-rastros.gif' }}"
+				 	 data-error-src="./assets/images/os-rastros.gif" />
 				<a class="aph list__item__link navbar__menu__user dropdown__toggle">
 					{{ user.displayName || user.email }}
 				</a>
@@ -63,8 +64,8 @@
 		<label class="aph navbar__menu__drawer"
 			   for="drawer-default"
 			   data-drawer="drawer-default-menu">
-			<i class="fa fa-fw fa-bars"></i>
 
+			<span class="aph navbar__menu__drawer__hamburguer"></span>
 			<input class="aph navbar__menu__drawer__checkbox"
 				   type="checkbox"
 				   name="drawer-default"
@@ -101,7 +102,8 @@
 			 		 height="32"
 			 		 width="32"
 			 		 alt="{{ user.displayName || user.email }}"
-				 	 data-ng-src="{{ user.photoURL || '/assets/images/os-rastros.gif' }}" />
+				 	 data-ng-src="{{ user.photoURL || '/assets/images/os-rastros.gif' }}"
+				 	 data-error-src="./assets/images/os-rastros.gif" />
 				{{ user.displayName || user.email }}
 			</a>
 		</li>

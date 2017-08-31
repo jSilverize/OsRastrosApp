@@ -23,6 +23,12 @@ $this: ".aph.navbar";
 
 					font-size: 20px;
 					color    : $color-black;
+
+					&:before,
+					&:after,
+					&__hamburguer {
+						background-color: $color-green;
+					}
 				}
 
 				&__user {

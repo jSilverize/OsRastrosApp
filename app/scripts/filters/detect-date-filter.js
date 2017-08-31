@@ -5,9 +5,9 @@ angular.module('rastros')
 	return function (dateString) {
 		var string  =
             $filter('removeBreakLines')(dateString)
-                .replace('     ', '')
-                .replace('                     ', '')
-                .replace('                ', '');
+                .replace('                        ', '')
+                .replace('                        ', '')
+                .replace('                    ', '');
 
         var date = string.slice(-19, -9);
         var time = string.slice(-5);

@@ -13,12 +13,12 @@ angular.module('rastros')
         futliga.innerHTML = html;
 
         function splitAgenda () {
-            var matches = futliga.querySelectorAll('.agenda-pagina-equipe');
+            var matches = futliga.querySelectorAll('.apresentacao-jogos-times');
 
             for (var i = 0; i < matches.length; i++) {
                 var match = angular.copy(matchInit);
                 var date  = matches[i].querySelector('h5');
-                var teams = matches[i].querySelectorAll('.jogos-times-nome h4 a');
+                var teams = matches[i].querySelectorAll('.jogo .nome-equipe h4 a');
                 var path  = matches[i].querySelector('.veja-mais').pathname;
 
                 // Define ID
